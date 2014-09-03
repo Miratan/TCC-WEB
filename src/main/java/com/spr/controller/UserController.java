@@ -28,29 +28,7 @@ public class UserController {
 	
 	@Autowired
 	private UserSession userSession;
-	
-//	@RequestMapping(method = RequestMethod.POST)
-//	public @ResponseBody
-//	String allMachineByMachineType(@RequestParam(required = true) String user, String password){
-//		
-//		List<User> users = userService.findAll();
-//		User userSet = null;
-//		
-//		for(User list: users){
-//			if(list.getName().equals(user) && list.getPassword().equals(password)){
-//				
-//				userSet = list;
-//				
-//				System.out.println("logado");
-//				break;
-//			}
-//		}
-//		
-////		System.out.println("User: " + user + " Password: " + password);
-//		
-//		return "http://localhost:8080/web-tcc-2014/logado.jsp";
-//	}
-	
+
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView userLogged(@RequestParam(required = true) String name, String password) {
 		
