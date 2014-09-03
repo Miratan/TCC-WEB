@@ -1,0 +1,74 @@
+body {
+    background-color: #b0c4de;
+}
+
+.text{
+	margin-top: 300px;
+}
+
+.subText{
+	font-size: 20px;
+	margin-top: 50px;
+	margin-left: 180px;
+/* 	color: darkslateblue; */
+	font-style: italic;
+}
+
+.textCenterAcess{
+	margin-top: 150px;
+	font-size: 25px;
+	text-align: center;
+}
+
+.tableProject{
+	
+}
+
+.inputGroup{
+	border-radius: 10px !important;
+	margin-top: 10px;
+	text-align: center;
+	font-size: 14px !important;
+	height: 30px;
+	background-color: #fff;
+}
+
+.buttonInputGroup{
+	border-radius: 5px !important;
+	margin-top: 5px !important;
+}
+
+.textRightLoginScrenn{
+	margin-left: 170px;
+}
+
+.textLeftLoginScrenn{
+	margin-right: 170px;
+}
+
+.textSize{
+	font-size: 14px;
+	margin-top: 15px;
+}
+
+.textInfo{
+	font-style: italic;
+}
+
+.aLink{
+	text-decoration: none !important;
+	color: black;
+}
+
+.footer{
+	text-align: center;
+	margin-top: 200px;
+}
+
+.form-control{
+	width:250px !important;
+}
+
+.form-horizontal{
+	font-size: 14px !important;
+}

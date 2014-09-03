@@ -1,0 +1,14 @@
+CREATE TABLE `users` (
+  `id` int(6) NOT NULL AUTO_INCREMENT,
+  `name` varchar(60) NOT NULL,
+  `password` varchar(60) NOT NULL,
+  `nameUser` varchar(60) NOT NULL,
+  `city` varchar(60),
+  `birthday` date,
+  `country` varchar(60),
+  `email` varchar(60),
+  `college` varchar(60),
+  `course` varchar(60),
+  `semester` int(2),
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
