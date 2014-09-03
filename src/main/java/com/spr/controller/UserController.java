@@ -69,7 +69,6 @@ public class UserController {
 		try {
 			userSession.logout();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	    return "http://localhost:8080/web-tcc-2014/index.jsp";  
