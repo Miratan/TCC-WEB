@@ -17,6 +17,8 @@
 
 <script type="text/javascript">
 
+ var SYSTEM_URL = "localhost:8080/web-test/";
+
 // 	$(document).ready(function() {
 		
 // 		//GET CURRENT URL
@@ -43,13 +45,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="logged.jsp">Web TCC</a>
+          <a class="navbar-brand" href="${pageContext.request.contextPath}/logged.jsp">Web TCC</a>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="#myProjects">Meus Projetos</a></li>
-            <li><a href="myAccount.jsp">Minha Conta</a></li>
-            <li><a href="#contact">Relatórios</a></li>
+          	<li><a href="${pageContext.request.contextPath}/project.jsp">Novo Projeto</a></li>
+            <li><a href="${pageContext.request.contextPath}/myProjects">Meus Projetos</a></li>
+            <li><a href="${pageContext.request.contextPath}/myAccount.jsp">Minha Conta</a></li>
+            <li><a href="${pageContext.request.contextPath}/report">Relatórios</a></li>
           </ul>
           
           <ul class="nav navbar-nav" style="margin-left:520px;">

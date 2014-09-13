@@ -17,18 +17,9 @@
 
 <script type="text/javascript">
 
-		$(document).ready(function() {
-			
-			//GET CURRENT URL
-			var currentURL = window.location.pathname;
-			console.log(currentURL);
-			
-			setTimeout(function() {
-				$('.msg').fadeOut('slow');
-			}, 1500);
-			
-		});
+var SYSTEM_URL = "localhost:8080/web-test/";
 
+		
 </script>
 
 </head>
@@ -43,18 +34,18 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="logged.jsp">Web TCC</a>
+          <a class="navbar-brand" href="${pageContext.request.contextPath}/logged.jsp">Web TCC</a>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
           	<li><a href="${pageContext.request.contextPath}/project.jsp">Novo Projeto</a></li>
-            <li><a href="${pageContext.request.contextPath}/project/findUserLogged">Meus Projetos</a></li>
-            <li><a href="${pageContext.request.contextPath}/login/editUserLogged">Minha Conta</a></li>
+            <li><a href="${pageContext.request.contextPath}/myProjects">Meus Projetos</a></li>
+            <li><a href="${pageContext.request.contextPath}/myAccount.jsp">Minha Conta</a></li>
             <li><a href="${pageContext.request.contextPath}/report">Relatórios</a></li>
           </ul>
           
           <ul class="nav navbar-nav" style="margin-left:520px;">
-            <li style="margin-top: 15px;font-size: 15px;color: darkgray;">Olá, ${userLogged}!</li>
+            <li style="margin-top: 15px;font-size: 15px;color: darkgray;">Olá, !</li>
           </ul>
           
           <ul class="final" style="margin-left:1070px;">
@@ -63,31 +54,45 @@
           		<a class="navbar-brand glyphicon glyphicon-off" href="logout.jsp"></a>
           </div>
           </li>
-<!--           <a class="navbar-brand glyphicon glyphicon-off" href="logged.jsp">Sair</a></li> -->
-<!--             <li><a href="login.jsp">Acesso ao Sistema</a></li> -->
-<!--             <li><a href="register.jsp">Cadastrar</a></li> -->
-<!--             <li><a href="#contact">Contato</a></li> -->
           </ul>
-        </div><!--/.nav-collapse -->
+        </div>
       </div>
     </div>
 
-    <div class="container">
+    <div class="container" style="margin-top: 30px;">
+    
+   		<h1 style="padding: 40px 15px;text-align: center;">
+			Ferramenta Web de Acompanhamento e Versionamento de	Trabalhos Acadêmicos
+		</h1>
+    
+    	<div class="panel panel-default">
+      <!-- Default panel contents -->
+      <div class="panel-heading">Panel heading</div>
 
-    	<div class="starter-template" style="margin-top:150px;">
-<!--         <h1>Bootstrap starter template</h1> -->
-<!--         <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p> -->
-<!--       </div> -->
-      
-      			<div class="col-md-12">
-					<div id="dateCurrent" class="row dateCurrent">
-					</div>
-				</div>
-				
-				
-		</div>
-		
-		<div class="msg" style="margin-top: 30px;margin-right: 50px;text-align: center;color:black;">${msg}</div>
+      <!-- Table -->
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Data da Entrega</th>
+          </tr>
+        </thead>
+        <tbody id="#tableProject">
+          <tr>
+            <td>1</td>
+            <td>TESTE</td>
+            <td>TESTE</td>
+            <td>12/12/2012</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    	
+    	
+    	
+    	
 
     </div><!-- /.container -->
 

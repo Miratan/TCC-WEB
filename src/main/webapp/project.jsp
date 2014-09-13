@@ -12,19 +12,25 @@
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-
+        
 <title>Web - TCC</title>
 
 <script type="text/javascript">
 
 	$(document).ready(function() {
-
+		
 		//GET CURRENT URL
 		var currentURL = window.location.pathname;
 		console.log(currentURL);
+		
+		setTimeout(function() {
+			$('.msgErrorLogin').fadeOut('slow');
+		}, 1500);
+		
 	});
 
 </script>
+
 
 </head>
 <body>
@@ -38,59 +44,45 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="index.jsp">Web TCC</a>
+          <a class="navbar-brand" href="${pageContext.request.contextPath}/logged.jsp">Web TCC</a>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="${pageContext.request.contextPath}/login.jsp">Acesso ao Sistema</a></li>
-            <li><a href="${pageContext.request.contextPath}/register.jsp">Cadastrar</a></li>
-            <li><a href="${pageContext.request.contextPath}/contact">Contato</a></li>
+            <li><a href="project.jsp">Novo Projeto</a></li>
+            <li><a href="#myProjects">Meus Projetos</a></li>
+            <li><a href="${pageContext.request.contextPath}/login/editUserLogged">Minha Conta</a></li>
+            <li><a href="#contact">Relatórios</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </div>
 
-	<div class="container" style="margin-top: 30px;">
+		<div class="container" style="margin-top: 30px;">
 
 		<h1 style="padding: 40px 15px;text-align: center;">
 			Ferramenta Web de Acompanhamento e Versionamento de	Trabalhos Acadêmicos
 		</h1>
-	
-	
+		
 		<div class="textCenterAcess" style="text-align: center;">
 			<div class="col-md-12">
-				<form:form  method="post" action="/login/create">
+				<form:form  method="post" action="/project/create">
 					<div class="form-inline">
 						<div class="col-md-4">
-							<input id="name" name="name" type="text" class="form-control" placeholder="Usuário">
+							<input id="title" name="title" type="text" class="form-control" placeholder="Título">
 						</div>
 						<div class="col-md-4">
-							<input id="password" name="password" type="password" class="form-control" placeholder="Senha">
+							<input id="description" name="description" type="text" class="form-control" placeholder="Descrição">
 						</div>
 						<div class="col-md-4">
-							<input id="email" name="email" type="text" class="form-control"	placeholder="E-mail">
+							<input id="keyWords" name="keyWords" type="text" class="form-control"	placeholder="Chaves">
 						</div>
 					</div>
 					<div class="form-inline">
 						<div class="col-md-4" style="margin-top:20px;">
-							<input id="userName" name="nameUser" type="text" class="form-control" placeholder="Nome Completo">
+							<input id="discipline" name="discipline" type="text" class="form-control" placeholder="Disciplina">
 						</div>
 						<div class="col-md-4" style="margin-top:20px;">
-							<input id="birthday" name="birthday" type="date" class="form-control"	placeholder="Data Nascimento">
-						</div>
-						<div class="col-md-4" style="margin-top:20px;">
-							<input id="city" name="city" type="text" class="form-control" placeholder="Cidade">
-						</div>
-					</div>
-						<div class="form-inline">
-						<div class="col-md-4" style="margin-top:20px;">
-							<input id="course" name="course" type="text" class="form-control"	placeholder="Curso">
-						</div>
-						<div class="col-md-4" style="margin-top:20px;">
-							<input id="semester" name="semester" type="number" min="1" class="form-control" placeholder="Semestre">
-						</div>
-						<div class="col-md-4" style="margin-top:20px;">
-							<input id="college" name="college" type="text" class="form-control"	placeholder="Universidade">
+							<input id="deliveryDate" name="deliveryDate" type="date" class="form-control"	placeholder="Data da Entrega">
 						</div>
 					</div>
 					<div class="form-group">
@@ -103,6 +95,8 @@
 				</form:form>
 			</div>
 		</div>
+		
 	</div>
+
 </body>
 </html>

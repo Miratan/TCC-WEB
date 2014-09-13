@@ -1,0 +1,9 @@
+CREATE TABLE `project` (
+  `id` int(6) NOT NULL AUTO_INCREMENT,
+  `title` varchar(60) NOT NULL,
+  `description` varchar(60) NOT NULL,
+  `keyWords` varchar(60) NOT NULL,
+  `discipline` varchar(60),
+  `deliveryDate` date,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
