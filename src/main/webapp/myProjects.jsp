@@ -19,6 +19,29 @@
 
 var SYSTEM_URL = "localhost:8080/web-test/";
 
+// 	var projects = ${myProjects};
+	
+// 	var tr = "";
+// 	$.each(projects, function (key, valor){
+		
+// 		console.log(valor);
+
+// 	var title = ${myProjects.getTitle().toString()};
+// 	var desc = ${myProjects.getDescription()};
+// 	var data = ${myProjects.getDeliveryDate()};
+		
+		var tr  = 	'<tr> '
+				+	'<td> VAZIO </td>'
+				+	'<td> VAZIO </td>'
+				+	'<td> VAZIO </td>'
+				+	'<td> VAZIO </td>'
+				+	'</tr>';
+		
+// 	});
+	
+	var table = $('#tableProject').find();
+	table.append(tr);
+	
 		
 </script>
 
@@ -64,37 +87,29 @@ var SYSTEM_URL = "localhost:8080/web-test/";
    		<h1 style="padding: 40px 15px;text-align: center;">
 			Ferramenta Web de Acompanhamento e Versionamento de	Trabalhos Acadêmicos
 		</h1>
-    
-    	<div class="panel panel-default">
-      <!-- Default panel contents -->
-      <div class="panel-heading">Panel heading</div>
 
-      <!-- Table -->
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Data da Entrega</th>
-          </tr>
-        </thead>
-        <tbody id="#tableProject">
-          <tr>
-            <td>1</td>
-            <td>TESTE</td>
-            <td>TESTE</td>
-            <td>12/12/2012</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    	
-    	
-    	
-    	
+		<div class="panel panel-default">
+			<!-- Default panel contents -->
+			<!-- Table -->
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Id</th>
+						<th>Title</th>
+						<th>Description</th>
+						<th>Data da Entrega</th>
+					</tr>
+				</thead>
+				<tbody id="tableProject">
+				</tbody>
+			</table>
+		</div>
 
-    </div><!-- /.container -->
+
+
+
+
+	</div><!-- /.container -->
 
 </body>
 </html>

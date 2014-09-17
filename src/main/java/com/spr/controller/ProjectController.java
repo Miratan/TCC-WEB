@@ -1,6 +1,5 @@
 package com.spr.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spr.model.Project;
-import com.spr.model.User;
-import com.spr.model.UserProject;
+import com.spr.repository.ProjectRepository;
 import com.spr.repository.UserProjectRepository;
 import com.spr.service.ProjectService;
 import com.spr.session.UserSession;
@@ -31,6 +29,9 @@ public class ProjectController {
 	@Autowired
 	private UserProjectRepository userProjectRepository;
 	
+	@Autowired
+	private ProjectRepository projectRepository;
+	
 	@RequestMapping(value="/create", method = RequestMethod.POST)
 	public @ResponseBody ModelAndView createProject(@ModelAttribute Project project){
 		projectService.create(project);
@@ -43,23 +44,15 @@ public class ProjectController {
 	}
 	
 	
-//	@RequestMapping(value="/findUserLogged")
-//	public @ResponseBody ModelAndView getProjectUserLogged(){
-//		List<UserProject> userProject = null;
-//		User user = userSession.getUserLogado();
-//		if(user.getId() != null){
-//			if(userProject == null){
-//				userProject = new ArrayList<UserProject>();
-//			}
-//			userProject = userProjectRepository.findAll();
-//		}
-//		
-//		userProjectRepository.
-//		
-//		ModelAndView mav = new ModelAndView("myProjects");
-//		mav.addObject("myProjects", userProject);
-//		mav.setViewName("myProjects");
-//		return mav;
-//	}
+	@RequestMapping(value="/findUserLogged")
+	public @ResponseBody ModelAndView getProjectUserLogged(){
+		
+		Project projects = projectRepository.findOne(2);
+		
+		ModelAndView mav = new ModelAndView("myProjects");
+		mav.addObject("myProjects", projects);
+		mav.setViewName("myProjects");
+		return mav;
+	}
 	
 }
