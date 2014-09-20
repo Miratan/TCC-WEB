@@ -3,6 +3,28 @@
 <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+	$.ajax({
+		url : "login/userLogged",
+		type : "GET",
+
+		success : function(response) {
+			console.log(response);
+			$('.nameUser').html("Olá, "+response);
+		}
+	});
+ 
+});
+
+</script>
+
+
 
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 	<div class="container">
@@ -13,13 +35,15 @@
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="index.jsp">Web TCC</a>
+			<a class="navbar-brand" href="indexUser.jsp">Web TCC</a>
 		</div>
 		<div class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="login.jsp">Acesso ao Sistema</a></li>
-				<li><a href="register.jsp">Cadastrar</a></li>
-<!-- 				<li><a href="about.jsp">Sobre</a></li> -->
+				<li><a href="myProjects.jsp">Meus Projetos</a></li>
+				<li><a href="newProject.jsp">Novo Projeto</a></li>
+				<li><a href="myAccount.jsp">Meus Dados</a></li>
+            	<li class="nameUser" style="margin-top: 15px;font-size: 15px;color: darkgray;margin-left: 385px;"></li>
+          		<li style="margin-left: 5px;"><a class="navbar-brand glyphicon glyphicon-off" href="${pageContext.request.contextPath}/login/logout"></a></li>
 			</ul>
 		</div>
 		<!--/.nav-collapse -->

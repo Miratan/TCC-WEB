@@ -44,9 +44,9 @@ public class UserController {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				ModelAndView mav = new ModelAndView("logged");
+				ModelAndView mav = new ModelAndView("indexUser");
 				mav.addObject("userLogged", name);
-				mav.setViewName("logged");
+				mav.setViewName("indexUser");
 				return mav;
 			}
 		}
@@ -59,19 +59,25 @@ public class UserController {
 	}
 	
 	@RequestMapping(value="/create", method = RequestMethod.POST)
-	public @ResponseBody String createUser(@ModelAttribute User user){
+	public @ResponseBody ModelAndView createUser(@ModelAttribute User user){
 		userService.create(user);
-		return "http://localhost:8080/web-tcc-2014/index.jsp";
+		ModelAndView mav = new ModelAndView("login");
+		mav.addObject("errorLogin", "Cadastro realizado com sucesso!");
+		mav.setViewName("login");
+		return mav;
 	}
 	
 	@RequestMapping(value="/logout")  
-	public String logout() {
+	public @ResponseBody ModelAndView logout() {
 		try {
 			userSession.logout();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	    return "http://localhost:8080/web-tcc-2014/index.jsp";  
+		ModelAndView mav = new ModelAndView("login");
+		mav.addObject("errorLogin", "Sessão finalizada!");
+		mav.setViewName("login");
+		return mav;
 	}
 	
 	@RequestMapping(value="/editUserLogged")  
@@ -109,4 +115,10 @@ public class UserController {
 		return mav;
 	}
 	
+	@RequestMapping(value = "/userLogged", method = RequestMethod.GET)
+	public @ResponseBody String userLogged() {
+		String response = "";
+		response = userSession.getUserLogado().getNameUser().toString();
+		return response;
+	}
 }

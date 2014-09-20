@@ -4,6 +4,12 @@
 <title>Web - TCC</title>
 
 <script type="text/javascript">
+
+	var currentURL = window.location.pathname;
+	setTimeout(function() {
+		$('.msgErrorLogin').fadeOut('slow');
+	}, 1500);
+ 
 </script>
 
 </head>
@@ -41,6 +47,10 @@
 				</div>
 			</div>
 		</div>
+	</div>
+	
+	<div class="msgErrorLogin" style="margin: auto; text-align: center; color: red;">
+			${errorLogin}
 	</div>
 </body>
 </html>

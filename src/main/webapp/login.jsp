@@ -8,16 +8,13 @@
 <title>Web - TCC</title>
 
 <script type="text/javascript">
-	$(document).ready(function() {
-		//GET CURRENT URL
-		var currentURL = window.location.pathname;
-		setTimeout(function() {
-			$('.msgErrorLogin').fadeOut('slow');
-		}, 1500);
-		
-	});
-</script>
 
+	var currentURL = window.location.pathname;
+	setTimeout(function() {
+		$('.msgErrorLogin').fadeOut('slow');
+	}, 1500);
+ 
+</script>
 
 </head>
 <body>
@@ -39,7 +36,7 @@
 					<input style="border-radius: 5px;width: 100%;!important" name="password" type="password"
 						class="form-control" placeholder="Senha">
 				</div>
-				<div class="col-md-2 input-group" style="margin:auto;text-align: center;">
+				<div class="col-md-2 input-group" style="margin:auto;text-align: center;margin-bottom: 15px;">
 					<button type="submit" 
 						class="btn btn-success dropdown-toggle buttonInputGroup" 
 						value="send">Entrar
@@ -51,7 +48,7 @@
 	</div>
 </div>
 
-	<div class="msgErrorLogin" style="margin-top: 30px; margin-right: 50px; text-align: center; color: red;">
+	<div class="msgErrorLogin" style="margin: auto; text-align: center; color: red;">
 			${errorLogin}
 	</div>
 
