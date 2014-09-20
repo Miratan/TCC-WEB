@@ -121,4 +121,12 @@ public class UserController {
 		response = userSession.getUserLogado().getNameUser().toString();
 		return response;
 	}
+	
+	@RequestMapping(value = "/user", method = RequestMethod.GET)
+	public @ResponseBody User user() {
+		
+		User user = userSession.getUserLogado();
+		return user;
+	}
+	
 }
