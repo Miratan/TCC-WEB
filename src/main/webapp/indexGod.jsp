@@ -10,7 +10,7 @@
 <body>
 	<!--  CHAMADA MENU FIXO PARA USUÁRIO SEM ACESSO E SCRIPT/LINK BOOTSTRAP E JQUERY -->
 	<div id="header">
-<%--     	<jsp:include page="menuUserLogged.jsp"/> --%>
+    	<jsp:include page="menuGodMode.jsp"/>
 	</div>
 
 	<div class="container">

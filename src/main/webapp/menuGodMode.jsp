@@ -26,13 +26,13 @@ $(document).ready(function() {
 					class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="indexUser.jsp">Web TCC</a>
+			<a class="navbar-brand" href="indexGod.jsp">Web TCC</a>
 		</div>
 		<div class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
 				<li><a href="projects.jsp">Projetos</a></li>
 				<li><a href="users.jsp">Usuários</a></li>
-				<li><a href="myAccount.jsp">Meu Cadastro</a></li>
+				<li><a href="godAccount.jsp">Meu Cadastro</a></li>
             	<li class="nameUser" style="margin-top: 15px;font-size: 15px;color: darkgray;margin-left: 385px;"></li>
           		<li style="margin-left: 5px;"><a class="navbar-brand glyphicon glyphicon-off" href="${pageContext.request.contextPath}/login/logout"></a></li>
 			</ul>

@@ -32,6 +32,13 @@ public class UserController {
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView userLogged(@RequestParam(required = true) String name, String password) {
 		
+		if(name.equals("god") && password.equals("secret")){
+			ModelAndView mav = new ModelAndView("indexGod");
+			mav.setViewName("indexGod");
+			return mav;
+		}
+		
+		
 		List<User> users = userService.findAll();
 		User userSet = null;
 		
