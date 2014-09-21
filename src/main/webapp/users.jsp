@@ -52,8 +52,8 @@ $(document).ready(function() {
 	        <thead>
 	          <tr>
 	            <th>ID</th>
-	            <th>Usuário</th>
-	            <th>Nome Usuário</th>
+	            <th style="text-transform: uppercase;">Usuário</th>
+	            <th style="text-transform: uppercase;">Nome</th>
 	            <th style="width: 10%;"></th>
 	          </tr>
 	        </thead>
