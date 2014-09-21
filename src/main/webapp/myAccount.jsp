@@ -21,6 +21,13 @@ $(document).ready(function() {
 		success : function(response) {
 			console.log(response);
 			$('#name').val(response.name);
+			$('#userName').val(response.nameUser);
+			$('#email').val(response.email);
+			$('#birthday').val(response.birthday);
+			$('#city').val(response.city);
+			$('#course').val(response.course);
+			$('#semester').val(response.semester);
+			$('#college').val(response.college);
 		}
 	});
  
@@ -42,40 +49,85 @@ $(document).ready(function() {
 				<form:form  method="POST" action="/login/edit/${user.getId()}">
 					<div class="form-inline">
 						<div class="col-md-4">
-							<input value="" id="name" name="name" type="text" class="form-control" placeholder="Usuário">
+							<div class="row">
+								<span style="color: darkblue;">Nome</span>
+							</div>
+							<div class="row">
+								<input value="" id="name" name="name" type="text" class="form-control" style="margin:auto;margin-bottom: 15px;" placeholder="Usuário">
+							</div>	
 						</div>
 						<div class="col-md-4">
-							<input id="password" name="password" type="password" class="form-control" placeholder="Nova Senha">
+							<div class="row">
+								<span style="color: darkblue;">Senha</span>
+							</div>
+							<div class="row">
+							<input id="password" name="password" type="password" class="form-control" style="margin:auto;margin-bottom: 15px;" placeholder="Nova Senha">
+							</div>
 						</div>
 						<div class="col-md-4">
-							<input value="" id="email" name="email" type="text" class="form-control"	placeholder="E-mail">
+							<div class="row">
+								<span style="color: darkblue;">E-mail</span>
+							</div>
+							<div class="row">
+							<input value="" id="email" name="email" type="text" class="form-control" style="margin:auto;margin-bottom: 15px;" placeholder="E-mail">
+							</div>
 						</div>
 					</div>
 					<div class="form-inline">
-						<div class="col-md-4" style="margin-top:20px;">
-							<input value="" id="userName" name="nameUser" type="text" class="form-control" placeholder="Nome Completo">
+						<div class="col-md-4">
+							<div class="row">
+								<span style="color: darkblue;">Usuário</span>
+							</div>
+							<div class="row">
+							<input value="" id="userName" name="nameUser" type="text" class="form-control" style="margin:auto;margin-bottom: 15px;" placeholder="Nome Completo">
+							</div>
 						</div>
-						<div class="col-md-4" style="margin-top:20px;">
-							<input value="" id="birthday" name="birthday" type="date" class="form-control" placeholder="Data de Nascimento">
+						<div class="col-md-4">
+							<div class="row">
+								<span style="color: darkblue;">Data de Nascimento</span>
+							</div>
+							<div class="row">
+							<input value="" id="birthday" name="birthday" type="date" class="form-control" style="margin:auto;margin-bottom: 15px;min-width: 197px;" placeholder="Data de Nascimento">
+							</div>
 						</div>
-						<div class="col-md-4" style="margin-top:20px;">
-							<input value="" id="city" name="city" type="text" class="form-control" placeholder="Cidade">
+						<div class="col-md-4">
+							<div class="row">
+								<span style="color: darkblue;">Cidade</span>
+							</div>
+							<div class="row">
+							<input value="" id="city" name="city" type="text" class="form-control" style="margin:auto;margin-bottom: 15px;" placeholder="Cidade">
+							</div>
 						</div>
 					</div>
 						<div class="form-inline">
-						<div class="col-md-4" style="margin-top:20px;">
-							<input value="" id="course" name="course" type="text" class="form-control" placeholder="Curso">
+						<div class="col-md-4">
+							<div class="row">
+								<span style="color: darkblue;">Curso</span>
+							</div>
+							<div class="row">
+							<input value="" id="course" name="course" type="text" class="form-control" style="margin:auto;margin-bottom: 15px;" placeholder="Curso">
+							</div>
 						</div>
-						<div class="col-md-4" style="margin-top:20px;">
-							<input value="" id="semester" name="semester" type="number" min="1" class="form-control" placeholder="Semestre">
+						<div class="col-md-4">
+							<div class="row">
+								<span style="color: darkblue;">Semestre</span>
+							</div>
+							<div class="row">
+							<input value="" id="semester" name="semester" type="number" min="1" class="form-control" style="margin:auto;margin-bottom: 15px;" placeholder="Semestre">
+							</div>
 						</div>
-						<div class="col-md-4" style="margin-top:20px;">
-							<input value="" id="college" name="college" type="text" class="form-control" placeholder="Universidade">
+						<div class="col-md-4">
+							<div class="row">
+								<span style="color: darkblue;">Universidade</span>
+							</div>
+							<div class="row">
+							<input value="" id="college" name="college" type="text" class="form-control" style="margin:auto;margin-bottom: 15px;" placeholder="Universidade">
+							</div>
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-md-12">
-							<div style="margin-top:20px;">
+							<div>
 								<button type="submit" class="btn btn-success" value="send">Atualizar</button>
 							</div>
 						</div>

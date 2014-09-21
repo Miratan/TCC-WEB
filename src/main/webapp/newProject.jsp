@@ -22,26 +22,26 @@
 				<form:form  method="post" action="/project/create">
 					<div class="form-inline">
 						<div class="col-md-4">
-							<input id="title" name="title" type="text" class="form-control" placeholder="Título">
+							<input id="title" name="title" type="text" class="form-control" style="margin:auto;margin-bottom: 15px;" placeholder="Título">
 						</div>
 						<div class="col-md-4">
-							<input id="description" name="description" type="text" class="form-control" placeholder="Descrição">
+							<input id="description" name="description" type="text" class="form-control" style="margin:auto;margin-bottom: 15px;" placeholder="Descrição">
 						</div>
 						<div class="col-md-4">
-							<input id="keyWords" name="keyWords" type="text" class="form-control"	placeholder="Chaves">
+							<input id="keyWords" name="keyWords" type="text" class="form-control" style="margin:auto;margin-bottom: 15px;" placeholder="Chaves">
 						</div>
 					</div>
 					<div class="form-inline">
-						<div class="col-md-4" style="margin-top:20px;">
-							<input id="discipline" name="discipline" type="text" class="form-control" placeholder="Disciplina">
+						<div class="col-md-4">
+							<input id="discipline" name="discipline" type="text" class="form-control" style="margin:auto;margin-bottom: 15px;" placeholder="Disciplina">
 						</div>
-						<div class="col-md-4" style="margin-top:20px;">
-							<input id="deliveryDate" name="deliveryDate" type="date" class="form-control"	placeholder="Data da Entrega">
+						<div class="col-md-4">
+							<input id="deliveryDate" name="deliveryDate" type="date" class="form-control" style="margin:auto;margin-bottom: 15px;min-width: 197px;" placeholder="Data da Entrega">
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-md-12">
-							<div style="margin-top:20px;">
+							<div>
 								<button type="submit" class="btn btn-success" value="send">Salvar</button>
 							</div>
 						</div>
