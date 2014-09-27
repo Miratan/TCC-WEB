@@ -38,22 +38,15 @@ $(document).ready(function() {
 				$('.tbProjects').append(tr);
 				
 				
-// 				$('.tbProjects').off('click', '.btn-edit');
-// 				$('.tbProjects').on('click', '.btn-edit', function(){
-// 					console.log("CLICOU PROJETO");
-// 					$('#myModal').modal(options);
+				$('.tbProjects').off('click', '#myModal');
+				$('.tbProjects').on('click', '#myModal', function(){
+					console.log("CLICOU PROJETO");
 					
-// 				});
-				
-				
+				});
 				
 			}
 		});
 	
-// 		$('.btn-edit').on('click', function() {
-// 			console.log("edição");
-// 		});
-
 	});
 
 </script>
@@ -97,7 +90,11 @@ $(document).ready(function() {
 					</button>
 					<h4 class="modal-title" id="myModalLabel">Edição de Projetos</h4>
 				</div>
-				<div class="modal-body">...</div>
+				<div class="modal-body">
+				
+				
+				
+				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 					<button type="button" class="btn btn-primary">Salvar</button>
