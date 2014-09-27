@@ -28,20 +28,31 @@ $(document).ready(function() {
 				var res = data.split("-");
 				var dataFinal = res[2]+'/'+res[1]+'/'+res[0];
 				
-				tr 	+= '<tr>'
+				tr 	+= '<tr data-id="'+value.projectId+'">'
 					+ '		<td style="width: 25%;word-break: break-word;word-wrap: break-word;">'+value.title+'</td>'
 					+ '		<td style="width: 40%;word-break: break-word;word-wrap: break-word;">'+value.description+'</td>'
 					+ '		<td>'+dataFinal+'</td>'
-					+ '		<td data-id="'+value.id+'"><span class="glyphicon glyphicon-pencil btn-edit" style="color: darkblue;"></span><span class="glyphicon glyphicon-remove btn-remove" style="color: red;float: right;"></span></td>'
+					+ '		<td><span data-toggle="modal" data-target="#myModal" class="glyphicon glyphicon-pencil btn-edit myModal" style="color: darkblue;cursor:pointer;"></span><span class="glyphicon glyphicon-remove btn-remove" style="color: red;float: right;"></span></td>'
 					+ '</tr>'
 			});
 				$('.tbProjects').append(tr);
+				
+				
+// 				$('.tbProjects').off('click', '.btn-edit');
+// 				$('.tbProjects').on('click', '.btn-edit', function(){
+// 					console.log("CLICOU PROJETO");
+// 					$('#myModal').modal(options);
+					
+// 				});
+				
+				
+				
 			}
 		});
 	
-		$('.btn-edit').on('click', function() {
-			console.log("edição");
-		});
+// 		$('.btn-edit').on('click', function() {
+// 			console.log("edição");
+// 		});
 
 	});
 
@@ -53,7 +64,7 @@ $(document).ready(function() {
 	<div id="header">
     	<jsp:include page="menuUserLogged.jsp"/>
 	</div>
-	
+		
     	<div class="container" style="margin-top: 30px;">
 		<div class="panel panel-default">
 <!-- 			<div class="panel-heading"> -->
@@ -73,6 +84,26 @@ $(document).ready(function() {
 	      </table>
 		</div>
 
+	</div>
+
+
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+		aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">
+						<span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+					</button>
+					<h4 class="modal-title" id="myModalLabel">Edição de Projetos</h4>
+				</div>
+				<div class="modal-body">...</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+					<button type="button" class="btn btn-primary">Salvar</button>
+				</div>
+			</div>
+		</div>
 	</div>
 
 </body>
