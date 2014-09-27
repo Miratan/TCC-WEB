@@ -36,7 +36,7 @@ public class User implements Serializable {
 	private String course;
 	private String semester;
 
-	@OneToMany(fetch = FetchType.LAZY)
+	@OneToMany(fetch = FetchType.EAGER)
 	@Cascade({CascadeType.SAVE_UPDATE})
 	private List<Project> project;
 	

@@ -1,19 +1,25 @@
 package com.spr.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spr.model.Project;
+import com.spr.model.User;
 import com.spr.repository.ProjectRepository;
 import com.spr.service.ProjectService;
+import com.spr.service.UserService;
 import com.spr.session.UserSession;
 
 @Controller
+@SessionAttributes("login")
 @RequestMapping("/project")
 public class ProjectController {
 	
@@ -26,27 +32,32 @@ public class ProjectController {
 	@Autowired
 	private ProjectRepository projectRepository;
 	
+	@Autowired
+	private UserService userService;
+	
 	@RequestMapping(value="/create", method = RequestMethod.POST)
 	public @ResponseBody ModelAndView createProject(@ModelAttribute Project project){
 		projectService.create(project);
 		
 		
-		ModelAndView mav = new ModelAndView("logged");
+		ModelAndView mav = new ModelAndView("indexUser");
 		mav.addObject("msg", "Projeto criado com sucesso!");
-		mav.setViewName("logged");
+		mav.setViewName("indexUser");
 		return mav;
 	}
 	
 	
-	@RequestMapping(value="/findUserLogged")
-	public @ResponseBody ModelAndView getProjectUserLogged(){
-		
-		Project projects = projectRepository.findOne(2);
-		
-		ModelAndView mav = new ModelAndView("myProjects");
-		mav.addObject("myProjects", projects);
-		mav.setViewName("myProjects");
-		return mav;
+	@RequestMapping(value="/findUserLogged", method = RequestMethod.GET)
+	public @ResponseBody List<Project> getProjectUserLogged(){
+		User user = userService.findById(userSession.getUserLogado().getUserId());
+		return (List<Project>) projectService.findAllByUserId(user.getUserId());
+//		return projectRepository.findByUserId(user.getUserId());
+	}
+	
+	@RequestMapping(value = "/allProject", method = RequestMethod.GET)
+	public @ResponseBody List<Project> allProject() {
+		User user = userService.findById(userSession.getUserLogado().getUserId());
+		return projectRepository.findByUserId(user.getUserId());
 	}
 	
 }

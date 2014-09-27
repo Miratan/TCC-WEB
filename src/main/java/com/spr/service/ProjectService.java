@@ -12,5 +12,6 @@ public interface ProjectService {
 	public List<Project> findAll();
 	public Project update(Project project) throws ProjectNotFound;
 	public Project findById(int id);
+	public List<Project> findAllByUserId(Integer userId);
 
 }

@@ -31,7 +31,7 @@ public class Project implements Serializable {
 	@Column(columnDefinition = "int(2) DEFAULT 0", insertable = false, updatable = true)
 	private Integer version;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="userId")
 	private User user;
 

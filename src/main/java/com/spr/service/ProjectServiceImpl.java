@@ -84,4 +84,10 @@ public class ProjectServiceImpl implements ProjectService {
 		return updatedProject;
 	}
 
+	@Override
+	@Transactional
+	public List<Project> findAllByUserId(Integer userId) {
+		return projectRepository.findByUserId(userId);
+	}
+
 }
