@@ -86,7 +86,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	@Transactional(rollbackFor=UserNotFound.class)
 	public User update(User user) throws UserNotFound {
-		User updatedUser = userRepository.findOne(user.getId());
+		User updatedUser = userRepository.findOne(user.getUserId());
 		
 		if (updatedUser == null)
 			throw new UserNotFound();

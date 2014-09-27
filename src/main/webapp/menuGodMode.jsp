@@ -33,6 +33,8 @@ $(document).ready(function() {
 				<li><a href="projects.jsp">Projetos</a></li>
 				<li><a href="users.jsp">Usuários</a></li>
 				<li><a href="godAccount.jsp">Meu Cadastro</a></li>
+				<li><a href="godNewArchive.jsp">Novo Arquivo</a></li>
+				<li><a href="godArchives.jsp">Arquivos</a></li>
             	<li class="nameUser" style="margin-top: 15px;font-size: 15px;color: darkgray;margin-left: 385px;"></li>
           		<li style="margin-left: 5px;"><a class="navbar-brand glyphicon glyphicon-off" href="${pageContext.request.contextPath}/login/logout"></a></li>
 			</ul>

@@ -5,32 +5,50 @@ import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "project")
+@Table
 public class Project implements Serializable {
 
 	private static final long serialVersionUID = -4091038843674636286L;
 
 	@Id
-	@Column(name = "PROJECT_ID")
 	@GeneratedValue
-	private Integer id;
+	private Integer projectId;
+	
 	private String title;
 	private String description;
 	private String keyWords;
 	private String discipline;
 	private Date deliveryDate;
+	
+	@Column(columnDefinition = "int(2) DEFAULT 0", insertable = false, updatable = true)
+	private Integer version;
 
-	public Integer getId() {
-		return id;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="userId")
+	private User user;
+
+	public Integer getProjectId() {
+		return projectId;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setProjectId(Integer projectId) {
+		this.projectId = projectId;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public String getTitle() {
@@ -73,4 +91,12 @@ public class Project implements Serializable {
 		this.deliveryDate = deliveryDate;
 	}
 
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
+	}
+	
 }

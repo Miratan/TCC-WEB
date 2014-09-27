@@ -106,7 +106,8 @@ public class UserController {
 			user.setPassword(userOld.getPassword());
 		}
 		
-		user.setId(userId);
+		user.setUserId(userId);
+//		user.setId(userId);
 		try {
 			userService.update(user);
 			userSession.logout();
@@ -115,7 +116,7 @@ public class UserController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		User userView = userService.findById(user.getId());
+		User userView = userService.findById(user.getUserId());
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("user", userView);
 		mav.setViewName("myAccount");

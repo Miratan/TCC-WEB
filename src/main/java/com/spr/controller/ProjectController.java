@@ -1,7 +1,5 @@
 package com.spr.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,7 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.spr.model.Project;
 import com.spr.repository.ProjectRepository;
-import com.spr.repository.UserProjectRepository;
 import com.spr.service.ProjectService;
 import com.spr.session.UserSession;
 
@@ -25,9 +22,6 @@ public class ProjectController {
 	
 	@Autowired
 	private UserSession userSession;
-	
-	@Autowired
-	private UserProjectRepository userProjectRepository;
 	
 	@Autowired
 	private ProjectRepository projectRepository;
