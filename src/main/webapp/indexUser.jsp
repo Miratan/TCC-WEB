@@ -10,6 +10,10 @@
 <title>Web - TCC</title>
 
 <script type="text/javascript">
+setTimeout(function() {
+	$('.msg').fadeOut('slow');
+}, 1500);
+
 $(document).ready(function(){
 	window.history.pushState(null, null, 'http://localhost:8080/web-test/indexUser.jsp');
 });
@@ -23,7 +27,9 @@ $(document).ready(function(){
 	</div>
 
 	<div class="container">
-	 USUÁRIO COM ACESSO
+		 	<div class="msg" style="margin: auto; text-align: center; color: red;">
+				${msg}
+			</div>
 	</div>
 </body>
 </html>

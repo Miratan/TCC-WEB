@@ -29,20 +29,32 @@ $(document).ready(function() {
 				var dataFinal = res[2]+'/'+res[1]+'/'+res[0];
 				
 				tr 	+= '<tr data-id="'+value.projectId+'">'
-					+ '		<td style="width: 25%;word-break: break-word;word-wrap: break-word;">'+value.title+'</td>'
-					+ '		<td style="width: 40%;word-break: break-word;word-wrap: break-word;">'+value.description+'</td>'
-					+ '		<td>'+dataFinal+'</td>'
-					+ '		<td><span data-toggle="modal" data-target="#myModal" class="glyphicon glyphicon-pencil btn-edit myModal" style="color: darkblue;cursor:pointer;"></span><span class="glyphicon glyphicon-remove btnDelete" style="color: red;float: right;cursor:pointer;"></span></td>'
+					+ '		<td style="width: 25%;word-break: break-word;word-wrap: break-word;" class="name">'+value.title+'</td>'
+					+ '		<td style="width: 40%;word-break: break-word;word-wrap: break-word;" class="desc">'+value.description+'</td>'
+					+ '		<td class="date">'+dataFinal+'</td>'
+					+ '		<td><span data-toggle="modal" data-target="#myModal" class="glyphicon glyphicon-pencil btnEdit" style="color: darkblue;cursor:pointer;"></span><span class="glyphicon glyphicon-remove btnDelete" style="color: red;float: right;cursor:pointer;"></span></td>'
 					+ '</tr>'
 			});
 				$('.tbProjects').append(tr);
 				
+				$('#myModal').find('#myModalLabel').html('PROJEToOOo!');
+				
+				$('.tbProjects').find('.btnEdit').off('click');
+				$('.tbProjects').find('.btnEdit').on('click', function(){
+					var my = $(this);
+					var $trLine = my.closest('tr');
+					var name = $trLine.find('.name').text();
+					$('#myModal').find('.modalBody').html('Nome Projeto: '+name);
+					
+					
+				});
 				
 				
 				$('.tbProjects').find('.btnDelete').off('click');
 				$('.tbProjects').find('.btnDelete').on('click', function(){
 					console.log("delete projeto");
-					var idRemove = $('.tbProjects').find('tr').data('id');
+					var $trRemove = $(this).closest('tr');
+					var idRemove = $trRemove.data('id');
 					console.log("ID: "+ idRemove);
 					
 					$.ajax({
@@ -105,7 +117,7 @@ $(document).ready(function() {
 					</button>
 					<h4 class="modal-title" id="myModalLabel">Edição de Projetos</h4>
 				</div>
-				<div class="modal-body">
+				<div class="modalBody">
 				
 				
 				
