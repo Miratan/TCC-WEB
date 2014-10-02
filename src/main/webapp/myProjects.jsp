@@ -32,7 +32,7 @@ $(document).ready(function() {
 					+ '		<td style="width: 25%;word-break: break-word;word-wrap: break-word;" class="name">'+value.title+'</td>'
 					+ '		<td style="width: 40%;word-break: break-word;word-wrap: break-word;" class="desc">'+value.description+'</td>'
 					+ '		<td class="date">'+dataFinal+'</td>'
-					+ '		<td><span data-toggle="modal" data-target="#myModal" class="glyphicon glyphicon-pencil btnEdit" style="color: darkblue;cursor:pointer;"></span><span class="glyphicon glyphicon-remove btnDelete" style="color: red;float: right;cursor:pointer;"></span></td>'
+					+ '		<td><span class="glyphicon glyphicon-pencil btnEdit" style="color: darkblue;cursor:pointer;"></span><span class="glyphicon glyphicon-remove btnDelete" style="color: red;float: right;cursor:pointer;"></span></td>'
 					+ '</tr>'
 			});
 				$('.tbProjects').append(tr);
@@ -41,11 +41,14 @@ $(document).ready(function() {
 				
 				$('.tbProjects').find('.btnEdit').off('click');
 				$('.tbProjects').find('.btnEdit').on('click', function(){
-					var my = $(this);
-					var $trLine = my.closest('tr');
-					var name = $trLine.find('.name').text();
-					$('#myModal').find('.modalBody').html('Nome Projeto: '+name);
+						var $tr = $(this).closest('tr');
+						var idTr = $tr.data('id');
+						window.location.href='http://localhost:8080/web-test/editProjectGeneric.jsp?'+idTr+'';
 					
+// 					var my = $(this);
+// 					var $trLine = my.closest('tr');
+// 					var name = $trLine.find('.name').text();
+// 					$('#myModal').find('.modalBody').html('Nome Projeto: '+name);
 					
 				});
 				
@@ -105,7 +108,6 @@ $(document).ready(function() {
 		</div>
 
 	</div>
-
 
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
 		aria-labelledby="myModalLabel" aria-hidden="true">

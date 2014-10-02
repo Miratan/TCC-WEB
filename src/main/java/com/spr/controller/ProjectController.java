@@ -74,7 +74,13 @@ public class ProjectController {
 		}
 		User user = userService.findById(userSession.getUserLogado().getUserId());
 		return (List<Project>) projectService.findAllByUserId(user.getUserId());
-//		return projectRepository.findByUserId(user.getUserId());
+	}
+	
+	
+	
+	@RequestMapping(value="/findById/{id}", method = RequestMethod.GET)
+	public @ResponseBody Project getProjectById(@PathVariable Integer id){
+		return projectService.findById(id);
 	}
 	
 }
