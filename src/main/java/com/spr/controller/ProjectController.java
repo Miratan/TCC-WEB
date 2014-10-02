@@ -5,12 +5,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.spr.exception.ProjectNotFound;
 import com.spr.model.Project;
 import com.spr.model.User;
 import com.spr.repository.ProjectRepository;
@@ -58,6 +60,21 @@ public class ProjectController {
 	public @ResponseBody List<Project> allProject() {
 		User user = userService.findById(userSession.getUserLogado().getUserId());
 		return projectRepository.findByUserId(user.getUserId());
+	}
+	
+	
+	@RequestMapping(value="/deleteProject/{projectId}", method = RequestMethod.DELETE)
+	public @ResponseBody List<Project> deleProjectGetProjects(@PathVariable Integer projectId){
+		
+		try {
+			projectService.delete(projectId);
+		} catch (ProjectNotFound e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		User user = userService.findById(userSession.getUserLogado().getUserId());
+		return (List<Project>) projectService.findAllByUserId(user.getUserId());
+//		return projectRepository.findByUserId(user.getUserId());
 	}
 	
 }

@@ -32,23 +32,38 @@ $(document).ready(function() {
 					+ '		<td style="width: 25%;word-break: break-word;word-wrap: break-word;">'+value.title+'</td>'
 					+ '		<td style="width: 40%;word-break: break-word;word-wrap: break-word;">'+value.description+'</td>'
 					+ '		<td>'+dataFinal+'</td>'
-					+ '		<td><span data-toggle="modal" data-target="#myModal" class="glyphicon glyphicon-pencil btn-edit myModal" style="color: darkblue;cursor:pointer;"></span><span class="glyphicon glyphicon-remove btn-remove" style="color: red;float: right;"></span></td>'
+					+ '		<td><span data-toggle="modal" data-target="#myModal" class="glyphicon glyphicon-pencil btn-edit myModal" style="color: darkblue;cursor:pointer;"></span><span class="glyphicon glyphicon-remove btnDelete" style="color: red;float: right;cursor:pointer;"></span></td>'
 					+ '</tr>'
 			});
 				$('.tbProjects').append(tr);
 				
 				
-				$('.tbProjects').off('click', '#myModal');
-				$('.tbProjects').on('click', '#myModal', function(){
-					console.log("CLICOU PROJETO");
+				
+				$('.tbProjects').find('.btnDelete').off('click');
+				$('.tbProjects').find('.btnDelete').on('click', function(){
+					console.log("delete projeto");
+					var idRemove = $('.tbProjects').find('tr').data('id');
+					console.log("ID: "+ idRemove);
+					
+					$.ajax({
+					    url: 'project/deleteProject/'+idRemove,
+					    type: 'DELETE',
+					    success: function(result) {
+					    	console.log(result);
+					    }
+					}).done(function() {
+						location.reload();
+					}).fail(function(par1, par2, par3) {
+					}).always(function() {
+					});
 					
 				});
 				
 			}
 		});
 	
+	
 	});
-
 </script>
 </head>
 <body>

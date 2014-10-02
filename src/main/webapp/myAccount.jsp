@@ -30,6 +30,10 @@ $(document).ready(function() {
 			$('#college').val(response.college);
 		}
 	});
+	
+	$(document).ready(function(){
+		window.history.pushState(null, null, 'http://localhost:8080/web-test/myAccount.jsp');
+	});
  
 });
 
