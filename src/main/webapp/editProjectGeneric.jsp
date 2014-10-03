@@ -13,32 +13,25 @@
 $(document).ready(function(){
 	var url   = window.location.search.replace("?", "");
 	window.history.pushState(null, null, 'http://localhost:8080/web-test/indexUser.jsp');
-	
 	var id = url.split("&");
-	
 	$.ajax({
 		url : "project/findById/"+id,
 		type : "GET",
 		success : function(response) {
-			var tr = "";
-				var data = response.deliveryDate;
-				var res = data.split("-");
-				var dataFinal = res[2]+'/'+res[1]+'/'+res[0];
-				
-				tr 	+= '<tr data-id="'+response.projectId+'">'
-					+ '		<td style="width: 25%;word-break: break-word;word-wrap: break-word;" class="name">'+response.title+'</td>'
-					+ '		<td style="width: 40%;word-break: break-word;word-wrap: break-word;" class="desc">'+response.description+'</td>'
-					+ '		<td class="date">'+dataFinal+'</td>'
-					+ '		<td><span class="glyphicon glyphicon-pencil btnEdit" style="color: darkblue;cursor:pointer;"></span><span class="glyphicon glyphicon-remove btnDelete" style="color: red;float: right;cursor:pointer;"></span></td>'
-					+ '</tr>';
-					
-			$('.tbProjects').append(tr);
+			
+			$('.textCenterAcess').find('.name').val(response.title);
+			$('.textCenterAcess').find('.description').val(response.description);
+			$('.textCenterAcess').find('.keyWords').val(response.keyWords);
+			$('.textCenterAcess').find('.discipline').val(response.discipline);
+			$('.textCenterAcess').find('.deliveryDate').val(response.deliveryDate);
 				
 			}
 		});
 	
-	
-	
+	$('.textCenterAcess').find('.btn-warning').off('click');
+	$('.textCenterAcess').find('.btn-warning').on('click', function(){
+			window.location.href='http://localhost:8080/web-test/myProjects.jsp';
+	});
 });
 </script>
 
@@ -49,23 +42,57 @@ $(document).ready(function(){
     	<jsp:include page="menuUserLogged.jsp"/>
 	</div>
 	
-	<div class="container" style="margin-top: 30px;">
-		<div class="panel panel-default">
-<!-- 			<div class="panel-heading"> -->
-<!-- 			</div> -->
+	<div class="container" style="margin-top: -30px;">
+<!-- 		<div class="panel panel-default"> -->
 
-		<table class="table">
-	        <thead>
-	          <tr>
-	            <th style="text-transform: uppercase;">Título</th>
-	            <th style="text-transform: uppercase;">Descrição</th>
-	            <th style="text-transform: uppercase;">Data da Entrega</th>
-	            <th style="width: 10%;"></th>
-	          </tr>
-	        </thead>
-	        <tbody class="tbProjects">
-	        </tbody>
-	      </table>
+<!-- 		<table class="table"> -->
+<!-- 	        <thead> -->
+<!-- 	          <tr> -->
+<!-- 	            <th style="text-transform: uppercase;">Título</th> -->
+<!-- 	            <th style="text-transform: uppercase;">Descrição</th> -->
+<!-- 	            <th style="text-transform: uppercase;">Data da Entrega</th> -->
+<!-- 	            <th style="width: 10%;"></th> -->
+<!-- 	          </tr> -->
+<!-- 	        </thead> -->
+<!-- 	        <tbody class="tbProjects"> -->
+<!-- 	        </tbody> -->
+<!-- 	      </table> -->
+<!-- 		</div> -->
+		
+		<div class="textCenterAcess" style="text-align: center;">
+			<div class="col-md-12">
+				<form:form  method="post" action="/project/create">
+					<div class="form-inline">
+						<div class="col-md-12">
+							<input id="title" maxlength="200" name="title" type="text" class="form-control name" style="width: 100%;margin-bottom: 15px;">
+						</div>
+						<div class="col-md-6">
+							<textarea rows="4" cols="50" maxlength="3000" class="form-control description" id="description" name="description" style="width: 100%;margin-bottom: 15px;" placeholder="Descrição"></textarea>
+<!-- 							<input id="description" name="description" type="text" class="form-control" style="margin:auto;margin-bottom: 15px;" placeholder="Descrição"> -->
+						</div>
+						<div class="col-md-6">
+							<input id="keyWords" name="keyWords" maxlength="200" type="text" class="form-control keyWords" style="width: 100%;margin-bottom: 15px;" placeholder="Palavras Chaves">
+						</div>
+						<div class="col-md-6">
+							<input id="discipline" name="discipline" maxlength="200" type="text" class="form-control discipline" style="width: 100%;margin-bottom: 15px;margin-top: 10px;" placeholder="Disciplina">
+						</div>
+						<div class="col-md-12" style="text-align: left;">
+							<div>
+								<span style="color: darkblue;font-style: italic;">Data Estimada da Entrega</span>
+							</div>
+							<input id="deliveryDate" name="deliveryDate" type="date" class="form-control deliveryDate" style="margin:auto;margin-bottom: 15px;min-width: 197px;" placeholder="Data da Entrega">
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-md-12">
+							<div>
+								<button type="submit" class="btn btn-success" style="width:150px">Salvar</button>
+								<button type="submit" class="btn btn-warning" style="margin-left: 15px;">Voltar</button>
+							</div>
+						</div>
+					</div>
+				</form:form>
+			</div>
 		</div>
 
 	</div>

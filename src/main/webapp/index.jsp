@@ -20,7 +20,7 @@
 	</div>
 
 	<div class="container">
-		<div class="starter-template" style="margin-top: 30px;">
+		<div class="starter-template">
 			<div class="col-md-12">
 				<div class="row">
 					<h1>Sua primeira vez aqui?</h1>
