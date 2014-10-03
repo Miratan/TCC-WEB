@@ -64,17 +64,29 @@ $(document).ready(function(){
 				<form:form  method="post" action="/project/create">
 					<div class="form-inline">
 						<div class="col-md-12">
+							<div>
+								<span style="color: darkblue;font-style: italic;">Título</span>
+							</div>
 							<input id="title" maxlength="200" name="title" type="text" class="form-control name" style="width: 100%;margin-bottom: 15px;">
 						</div>
 						<div class="col-md-6">
+							<div>
+								<span style="color: darkblue;font-style: italic;">Descrição</span>
+							</div>
 							<textarea rows="4" cols="50" maxlength="3000" class="form-control description" id="description" name="description" style="width: 100%;margin-bottom: 15px;" placeholder="Descrição"></textarea>
 <!-- 							<input id="description" name="description" type="text" class="form-control" style="margin:auto;margin-bottom: 15px;" placeholder="Descrição"> -->
 						</div>
 						<div class="col-md-6">
+							<div>
+								<span style="color: darkblue;font-style: italic;">Palavras Chaves</span>
+							</div>
 							<input id="keyWords" name="keyWords" maxlength="200" type="text" class="form-control keyWords" style="width: 100%;margin-bottom: 15px;" placeholder="Palavras Chaves">
 						</div>
 						<div class="col-md-6">
-							<input id="discipline" name="discipline" maxlength="200" type="text" class="form-control discipline" style="width: 100%;margin-bottom: 15px;margin-top: 10px;" placeholder="Disciplina">
+							<div>
+								<span style="color: darkblue;font-style: italic;">Disciplina</span>
+							</div>
+							<input id="discipline" name="discipline" maxlength="200" type="text" class="form-control discipline" style="width: 100%;margin-bottom: 15px;" placeholder="Disciplina">
 						</div>
 						<div class="col-md-12" style="text-align: left;">
 							<div>
