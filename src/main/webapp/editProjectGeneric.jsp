@@ -6,11 +6,15 @@
 <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://raw.githubusercontent.com/hongymagic/jQuery.serializeObject/master/dist/jquery.serializeObject.min.js" type="text/javascript"></script>
 
 <title>Web - TCC</title>
 
 <script type="text/javascript">
 $(document).ready(function(){
+	
+	$.fn.serializeObject=function(){"use strict";var a={},b=function(b,c){var d=a[c.name];"undefined"!=typeof d&&d!==null?$.isArray(d)?d.push(c.value):a[c.name]=[d,c.value]:a[c.name]=c.value};return $.each(this.serializeArray(),b),a};
+	
 	var url   = window.location.search.replace("?", "");
 	window.history.pushState(null, null, 'http://localhost:8080/web-test/indexUser.jsp');
 	var id = url.split("&");
@@ -24,6 +28,7 @@ $(document).ready(function(){
 			$('.textCenterAcess').find('.keyWords').val(response.keyWords);
 			$('.textCenterAcess').find('.discipline').val(response.discipline);
 			$('.textCenterAcess').find('.deliveryDate').val(response.deliveryDate);
+			$('.textCenterAcess').find('.id').val(response.id);
 				
 			}
 		});
@@ -32,6 +37,32 @@ $(document).ready(function(){
 	$('.textCenterAcess').find('.btn-warning').on('click', function(){
 			window.location.href='http://localhost:8080/web-test/myProjects.jsp';
 	});
+	
+	$('.textCenterAcess').find('.btn-success').off('click');
+	$('.textCenterAcess').find('.btn-success').on('click', function(){
+		var postData = $(this).closest('form').serializeObject();
+		$.ajax({
+			url : "project/update",
+			type : "POST",
+			data : JSON.stringify(postData),
+			success : function(response) {
+				console.log(reponse);
+				$('.textCenterAcess').find('.name').val(response.title);
+				$('.textCenterAcess').find('.description').val(response.description);
+				$('.textCenterAcess').find('.keyWords').val(response.keyWords);
+				$('.textCenterAcess').find('.discipline').val(response.discipline);
+				$('.textCenterAcess').find('.deliveryDate').val(response.deliveryDate);
+// 				$('.textCenterAcess').find('.id').val(response.id);
+					
+				},
+			error : function(erro){
+				console.log(erro);
+			}
+		});
+	});
+	
+	
+	
 });
 </script>
 
@@ -43,25 +74,10 @@ $(document).ready(function(){
 	</div>
 	
 	<div class="container" style="margin-top: -30px;">
-<!-- 		<div class="panel panel-default"> -->
-
-<!-- 		<table class="table"> -->
-<!-- 	        <thead> -->
-<!-- 	          <tr> -->
-<!-- 	            <th style="text-transform: uppercase;">Título</th> -->
-<!-- 	            <th style="text-transform: uppercase;">Descrição</th> -->
-<!-- 	            <th style="text-transform: uppercase;">Data da Entrega</th> -->
-<!-- 	            <th style="width: 10%;"></th> -->
-<!-- 	          </tr> -->
-<!-- 	        </thead> -->
-<!-- 	        <tbody class="tbProjects"> -->
-<!-- 	        </tbody> -->
-<!-- 	      </table> -->
-<!-- 		</div> -->
 		
 		<div class="textCenterAcess" style="text-align: center;">
 			<div class="col-md-12">
-				<form:form  method="post" action="/project/create">
+				<form:form>
 					<div class="form-inline">
 						<div class="col-md-12">
 							<div>
@@ -90,9 +106,15 @@ $(document).ready(function(){
 						</div>
 						<div class="col-md-12" style="text-align: left;">
 							<div>
-								<span style="color: darkblue;font-style: italic;">Data Estimada da Entrega</span>
+								<span style="color: darkblue;font-style: italic;">Data da Entrega</span>
 							</div>
 							<input id="deliveryDate" name="deliveryDate" type="date" class="form-control deliveryDate" style="margin:auto;margin-bottom: 15px;min-width: 197px;" placeholder="Data da Entrega">
+						</div>
+						<div class="col-md-12" style="text-align: left;">
+							<div>
+								<span style="color: darkblue;font-style: italic;">ID</span>
+							</div>
+							<input id="id" name="id" type="text" class="form-control id" style="margin:auto;margin-bottom: 15px;min-width: 197px;" placeholder="id">
 						</div>
 					</div>
 					<div class="form-group">

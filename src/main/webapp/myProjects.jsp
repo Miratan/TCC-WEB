@@ -32,7 +32,9 @@ $(document).ready(function() {
 					+ '		<td style="width: 25%;word-break: break-word;word-wrap: break-word;" class="name">'+value.title+'</td>'
 					+ '		<td style="width: 40%;word-break: break-word;word-wrap: break-word;" class="desc">'+value.description+'</td>'
 					+ '		<td class="date">'+dataFinal+'</td>'
-					+ '		<td><span class="glyphicon glyphicon-pencil btnEdit" style="color: darkblue;cursor:pointer;"></span><span class="glyphicon glyphicon-remove btnDelete" style="color: red;float: right;cursor:pointer;"></span></td>'
+					+ ' 	<td><span class="glyphicon glyphicon-user btnAddUser" style="color: darkgreen;cursor:pointer;"></span></td>'
+					+ '		<td><span class="glyphicon glyphicon-pencil btnEdit" style="color: darkblue;cursor:pointer;"></span></td>'
+					+ ' 	<td><span class="glyphicon glyphicon-remove btnDelete" style="color: red;cursor:pointer;"></span></td>'
 					+ '</tr>'
 			});
 				$('.tbProjects').append(tr);
@@ -44,12 +46,13 @@ $(document).ready(function() {
 						var $tr = $(this).closest('tr');
 						var idTr = $tr.data('id');
 						window.location.href='http://localhost:8080/web-test/editProjectGeneric.jsp?'+idTr+'';
-					
-// 					var my = $(this);
-// 					var $trLine = my.closest('tr');
-// 					var name = $trLine.find('.name').text();
-// 					$('#myModal').find('.modalBody').html('Nome Projeto: '+name);
-					
+				});
+				
+				$('.tbProjects').find('.btnAddUser').off('click');
+				$('.tbProjects').find('.btnAddUser').on('click', function(){
+						var $tr = $(this).closest('tr');
+						var idTr = $tr.data('id');
+						window.location.href='http://localhost:8080/web-test/addUsersInProject.jsp?'+idTr+'';
 				});
 				
 				
@@ -99,7 +102,9 @@ $(document).ready(function() {
 	            <th style="text-transform: uppercase;">Título</th>
 	            <th style="text-transform: uppercase;">Descrição</th>
 	            <th style="text-transform: uppercase;">Data da Entrega</th>
-	            <th style="width: 10%;"></th>
+	            <th style="width: 5%;"></th>
+	            <th style="width: 5%;"></th>
+	            <th style="width: 5%;"></th>
 	          </tr>
 	        </thead>
 	        <tbody class="tbProjects">

@@ -76,13 +76,6 @@ public class UserServiceImpl implements UserService {
 		return userRepository.findAll();
 	}
 	
-	
-//	@Override
-//	@Transactional
-//	public List<Shop> findAll() {
-//		return shopRepository.findAll();
-//	}
-
 	@Override
 	@Transactional(rollbackFor=UserNotFound.class)
 	public User update(User user) throws UserNotFound {
@@ -104,29 +97,9 @@ public class UserServiceImpl implements UserService {
 		return updatedUser;
 	}
 
-//	@Override
-//	public User findByNameAndPassword(String name, String password) {
-//		
-//		Query query = userRepository.
-//		
-////		userRepository.
-//		
-//		
-//		return null;
-//	}
-	
-	
-//	@Override
-//	@Transactional(rollbackFor=ShopNotFound.class)
-//	public Shop update(Shop shop) throws ShopNotFound {
-//		Shop updatedShop = shopRepository.findOne(shop.getId());
-//		
-//		if (updatedShop == null)
-//			throw new ShopNotFound();
-//		
-//		updatedShop.setName(shop.getName());
-//		updatedShop.setEmplNumber(shop.getEmplNumber());
-//		return updatedShop;
-//	}
+	@Override
+	public List<User> findByName(String name) {
+		return userRepository.findByName(name);
+	}
 
 }

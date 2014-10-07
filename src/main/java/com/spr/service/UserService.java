@@ -12,5 +12,6 @@ public interface UserService {
 	public List<User> findAll();
 	public User update(User user) throws UserNotFound;
 	public User findById(int id);
+	public List<User> findByName(String name);
 
 }

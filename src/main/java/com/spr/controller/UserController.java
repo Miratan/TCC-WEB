@@ -51,9 +51,9 @@ public class UserController {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				ModelAndView mav = new ModelAndView("indexUser");
-				mav.addObject("userLogged", name);
-				mav.setViewName("indexUser");
+				ModelAndView mav = new ModelAndView("myProjects");
+//				mav.addObject("userLogged", name);
+				mav.setViewName("myProjects");
 				return mav;
 			}
 		}
@@ -135,6 +135,11 @@ public class UserController {
 		
 		User user = userSession.getUserLogado();
 		return user;
+	}
+	
+	@RequestMapping(value = "/search/{valueToSearch}", method = RequestMethod.GET)
+	public @ResponseBody List<User> getUser(@PathVariable String valueToSearch) {
+		return userService.findByName(valueToSearch);
 	}
 	
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -45,6 +46,22 @@ public class ProjectController {
 		ModelAndView mav = new ModelAndView("indexUser");
 		mav.addObject("msg", "Projeto criado com sucesso!");
 		mav.setViewName("indexUser");
+		return mav;
+	}
+	
+	@RequestMapping(value="/update", method = RequestMethod.POST)
+	public @ResponseBody ModelAndView updateProject(@RequestBody Project project){
+		
+		try {
+			projectService.update(project);
+		} catch (ProjectNotFound e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		ModelAndView mav = new ModelAndView("myProjects");
+		mav.addObject("msg", "Projeto Alterado com sucesso!");
+		mav.setViewName("myProjects");
 		return mav;
 	}
 	
