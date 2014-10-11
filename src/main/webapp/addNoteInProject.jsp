@@ -34,9 +34,10 @@ $(document).ready(function() {
 				console.log(response);
 				var tr 	= '<tr>';
 				$.each(response, function(index, value) {
-					tr 	+= '	<td class="name">'+value.userCreator+'</td>'
+					tr 	+= '	<td class="id">'+value.noteId+'</td>'
+						+  '	<td class="name">'+value.userCreator+'</td>'
 						+  '	<td class="data">'+value.dateCreated+'</td>'
-						+  '	<td class="description">'+value.description+'</td>'
+						+  '	<td class="description" style="word-break: break-all;">'+value.description+'</td>'
 						+  ' </tr>';
 				});
 			
@@ -86,9 +87,10 @@ $(document).ready(function() {
 			success : function(response) {
 // 				console.log(reponse);
 				var tr 	= '<tr>'
+						+ '		<td class="id">'+response.noteId+'</td>'
 						+ '		<td class="name">'+response.userCreator+'</td>'
 						+ '		<td class="data">'+response.dateCreated+'</td>'
-						+ '		<td class="description">'+response.description+'</td>'
+						+ '		<td class="description" style="word-break: break-all;">'+response.description+'</td>'
 						+ '</tr>';
 				$('.tbNotes').append(tr);
 				
@@ -110,29 +112,11 @@ $(document).ready(function() {
     	<jsp:include page="menuUserLogged.jsp"/>
 	</div>
 	<div class="container" style="margin-top: -20px" data-projectid="">
-		<div class="row">
-			<div class="col-md-4">
-				<span style="color: darkblue;font-style: italic;">Comentários</span>
-				<textarea rows="4" cols="50" maxlength="255" class="form-control" id="description" name="description" style="width: 100%;margin-bottom: 15px;" placeholder="Descrição"></textarea>
-			</div>
-			<div class="col-md-2">
-				<span style="color: darkblue;font-style: italic;">Data</span>
-				<input id="dataCriacao" name="dataCriacao" type="date" class="form-control">
-			</div>
-		</div>
-		<div class="form-group">
-			<div class="col-md-12">
-				<div>
-					<button type="submit" class="btn btn-success btnSaveNote">Salvar</button>
-					<button type="submit" class="btn btn-warning">Limpar</button>
-				</div>
-			</div>
-		</div>
-
 		<div class="col-md-12 panel panel-default" style="margin-top: 30px;">
 			<table class="table">
 				<thead>
 					<tr>
+						<th style="text-transform: uppercase;">#</th>
 						<th style="text-transform: uppercase;">Usuário</th>
 						<th style="text-transform: uppercase;">Data</th>
 						<th style="text-transform: uppercase;width: 50%;">Comentários</th>
@@ -141,6 +125,25 @@ $(document).ready(function() {
 				<tbody class="tbNotes" data-projectId="">
 				</tbody>
 			</table>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-12">
+				<span style="color: darkblue;font-style: italic;">Comentários</span>
+				<textarea rows="5" cols="200" maxlength="255" class="form-control" id="description" name="description" style="width: 100%;margin-bottom: 15px;max-width: 100%;" placeholder="Descrição"></textarea>
+			</div>
+<!-- 			<div class="col-md-2"> -->
+<!-- 				<span style="color: darkblue;font-style: italic;">Data</span> -->
+<!-- 				<input id="dataCriacao" name="dataCriacao" type="date" class="form-control"> -->
+<!-- 			</div> -->
+		</div>
+		<div class="form-group">
+			<div class="col-md-12" style="margin-bottom: 20px">
+				<div>
+					<button type="submit" class="btn btn-success btnSaveNote">Salvar</button>
+					<button type="submit" class="btn btn-warning">Limpar</button>
+				</div>
+			</div>
 		</div>
 	</div>
 </body>
