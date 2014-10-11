@@ -65,7 +65,8 @@ $(document).ready(function() {
 						+ '		<td class="description" style="word-break: break-all;">'+response.description+'</td>'
 						+ '</tr>';
 				$('.tbNotes').append(tr);
-				
+				$('#description').val('');
+				$('#description').focus();
 			},
 			error : function(data){
 				console.log(data);
