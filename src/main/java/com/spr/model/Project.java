@@ -2,6 +2,7 @@ package com.spr.model;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,7 +11,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 @Entity
 @Table
@@ -34,6 +40,15 @@ public class Project implements Serializable {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name="userId")
 	private User user;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy="project", targetEntity = Note.class)
+	@Cascade({CascadeType.SAVE_UPDATE})
+	private List<Note> note;
+	
+//	@JsonIgnore
+//	@OneToMany(mappedBy = "project", fetch = FetchType.LAZY)
+//	@Cascade({CascadeType.SAVE_UPDATE})
+//	private List<Permission> permission;
 
 	public Integer getProjectId() {
 		return projectId;
@@ -98,5 +113,13 @@ public class Project implements Serializable {
 	public void setVersion(Integer version) {
 		this.version = version;
 	}
+
+//	public List<Permission> getPermission() {
+//		return permission;
+//	}
+//
+//	public void setPermission(List<Permission> permission) {
+//		this.permission = permission;
+//	}
 	
 }

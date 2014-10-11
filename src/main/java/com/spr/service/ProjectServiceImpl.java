@@ -80,6 +80,8 @@ public class ProjectServiceImpl implements ProjectService {
 		updatedProject.setDiscipline(project.getDiscipline());
 		updatedProject.setKeyWords(project.getKeyWords());
 		updatedProject.setTitle(project.getTitle());
+		
+		projectRepository.saveAndFlush(updatedProject);
 			
 		return updatedProject;
 	}

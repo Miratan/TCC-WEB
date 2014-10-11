@@ -24,27 +24,12 @@ public class UserServiceImpl implements UserService {
 		return userRepository.save(createdUser);
 	}
 	
-//	@Override
-//	@Transactional
-//	public Shop create(Shop shop) {
-//		Shop createdShop = shop;
-//		return shopRepository.save(createdShop);
-//	}
-	
-	
 	@Override
 	@Transactional
 	public User findById(int id) {
 		return userRepository.findOne(id);
 	}
 	
-	
-//	@Override
-//	@Transactional
-//	public Shop findById(int id) {
-//		return shopRepository.findOne(id);
-//	}
-
 	@Override
 	@Transactional(rollbackFor=UserNotFound.class)
 	public User delete(int id) throws UserNotFound {
@@ -57,19 +42,6 @@ public class UserServiceImpl implements UserService {
 		return deleteUser;
 	}
 	
-	
-//	@Override
-//	@Transactional(rollbackFor=ShopNotFound.class)
-//	public Shop delete(int id) throws ShopNotFound {
-//		Shop deletedShop = shopRepository.findOne(id);
-//		
-//		if (deletedShop == null)
-//			throw new ShopNotFound();
-//		
-//		shopRepository.delete(deletedShop);
-//		return deletedShop;
-//	}
-
 	@Override
 	@Transactional
 	public List<User> findAll() {
@@ -79,22 +51,25 @@ public class UserServiceImpl implements UserService {
 	@Override
 	@Transactional(rollbackFor=UserNotFound.class)
 	public User update(User user) throws UserNotFound {
-		User updatedUser = userRepository.findOne(user.getUserId());
+//		User updatedUser = userRepository.findOne(user.getUserId());
+//		
+//		if (updatedUser == null)
+//			throw new UserNotFound();
+//		
+//		updatedUser.setName(user.getName());
+//		updatedUser.setPassword(user.getPassword());
+//		updatedUser.setBirthday(user.getBirthday());
+//		updatedUser.setCity(user.getCity());
+//		updatedUser.setCollege(user.getCollege());
+//		updatedUser.setCountry(user.getCountry());
+//		updatedUser.setCourse(user.getCourse());
+//		updatedUser.setEmail(user.getEmail());
+//		updatedUser.setNameUser(user.getNameUser());
+//		updatedUser.setSemester(user.getSemester());
 		
-		if (updatedUser == null)
-			throw new UserNotFound();
+//		userRepository.save(user);
 		
-		updatedUser.setName(user.getName());
-		updatedUser.setPassword(user.getPassword());
-		updatedUser.setBirthday(user.getBirthday());
-		updatedUser.setCity(user.getCity());
-		updatedUser.setCollege(user.getCollege());
-		updatedUser.setCountry(user.getCountry());
-		updatedUser.setCourse(user.getCourse());
-		updatedUser.setEmail(user.getEmail());
-		updatedUser.setNameUser(user.getNameUser());
-		updatedUser.setSemester(user.getSemester());
-		return updatedUser;
+		return userRepository.save(user);
 	}
 
 	@Override

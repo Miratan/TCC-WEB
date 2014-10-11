@@ -32,6 +32,7 @@ $(document).ready(function() {
 					+ '		<td style="width: 25%;word-break: break-word;word-wrap: break-word;" class="name">'+value.title+'</td>'
 					+ '		<td style="width: 40%;word-break: break-word;word-wrap: break-word;" class="desc">'+value.description+'</td>'
 					+ '		<td class="date">'+dataFinal+'</td>'
+					+ ' 	<td><span class="glyphicon glyphicon-comment btnAddNote" style="color: coral;cursor:pointer;"></span></td>'
 					+ ' 	<td><span class="glyphicon glyphicon-user btnAddUser" style="color: darkgreen;cursor:pointer;"></span></td>'
 					+ '		<td><span class="glyphicon glyphicon-pencil btnEdit" style="color: darkblue;cursor:pointer;"></span></td>'
 					+ ' 	<td><span class="glyphicon glyphicon-remove btnDelete" style="color: red;cursor:pointer;"></span></td>'
@@ -46,6 +47,13 @@ $(document).ready(function() {
 						var $tr = $(this).closest('tr');
 						var idTr = $tr.data('id');
 						window.location.href='http://localhost:8080/web-test/editProjectGeneric.jsp?'+idTr+'';
+				});
+				
+				$('.tbProjects').find('.btnAddNote').off('click');
+				$('.tbProjects').find('.btnAddNote').on('click', function(){
+						var $tr = $(this).closest('tr');
+						var idTr = $tr.data('id');
+						window.location.href='http://localhost:8080/web-test/addNoteInProject.jsp?'+idTr+'';
 				});
 				
 				$('.tbProjects').find('.btnAddUser').off('click');
@@ -102,6 +110,7 @@ $(document).ready(function() {
 	            <th style="text-transform: uppercase;">Título</th>
 	            <th style="text-transform: uppercase;">Descrição</th>
 	            <th style="text-transform: uppercase;">Data da Entrega</th>
+	            <th style="width: 5%;"></th>
 	            <th style="width: 5%;"></th>
 	            <th style="width: 5%;"></th>
 	            <th style="width: 5%;"></th>

@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
@@ -39,6 +40,11 @@ public class User implements Serializable {
 	@OneToMany(fetch = FetchType.EAGER)
 	@Cascade({CascadeType.SAVE_UPDATE})
 	private List<Project> project;
+	
+//	@JsonIgnore
+//	@OneToMany(mappedBy = "project", fetch = FetchType.LAZY)
+//	@Cascade({CascadeType.SAVE_UPDATE})
+//	private List<Permission> permission;
 	
 	@Column(columnDefinition = "int(2) DEFAULT 0", insertable = false, updatable = true)
 	private Integer version;
@@ -146,5 +152,13 @@ public class User implements Serializable {
 	public void setVersion(Integer version) {
 		this.version = version;
 	}
+	
+//	public List<Permission> getPermission() {
+//		return permission;
+//	}
+//
+//	public void setPermission(List<Permission> permission) {
+//		this.permission = permission;
+//	}
 
 }

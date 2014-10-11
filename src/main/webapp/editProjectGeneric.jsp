@@ -28,7 +28,7 @@ $(document).ready(function(){
 			$('.textCenterAcess').find('.keyWords').val(response.keyWords);
 			$('.textCenterAcess').find('.discipline').val(response.discipline);
 			$('.textCenterAcess').find('.deliveryDate').val(response.deliveryDate);
-			$('.textCenterAcess').find('.id').val(response.id);
+			$('.textCenterAcess').find('.id').val(response.projectId);
 				
 			}
 		});
@@ -40,21 +40,32 @@ $(document).ready(function(){
 	
 	$('.textCenterAcess').find('.btn-success').off('click');
 	$('.textCenterAcess').find('.btn-success').on('click', function(){
-		var postData = $(this).closest('form').serializeObject();
+// 		var postData = $(this).closest('form').serializeObject();
+		var name = $('.textCenterAcess').find('.name').val();
+		var description = $('.textCenterAcess').find('.description').val();
+		var keyWords = $('.textCenterAcess').find('.keyWords').val();
+		var discipline = $('.textCenterAcess').find('.discipline').val();
+		var deliveryDate = $('.textCenterAcess').find('.deliveryDate').val();
+		var id = $('.textCenterAcess').find('.id').val();
 		$.ajax({
 			url : "project/update",
 			type : "POST",
-			data : JSON.stringify(postData),
+			data : {"name":name,
+        			"description":description,
+        			"keyWords":keyWords,
+       				"discipline":discipline,
+      				"deliveryDate":deliveryDate,
+      				"id":id},
 			success : function(response) {
-				console.log(reponse);
-				$('.textCenterAcess').find('.name').val(response.title);
-				$('.textCenterAcess').find('.description').val(response.description);
-				$('.textCenterAcess').find('.keyWords').val(response.keyWords);
-				$('.textCenterAcess').find('.discipline').val(response.discipline);
-				$('.textCenterAcess').find('.deliveryDate').val(response.deliveryDate);
+// 				console.log(reponse);
+// 				console.log(reponse);
+// 				$('.textCenterAcess').find('.name').val(response.title);
+// 				$('.textCenterAcess').find('.description').val(response.description);
+// 				$('.textCenterAcess').find('.keyWords').val(response.keyWords);
+// 				$('.textCenterAcess').find('.discipline').val(response.discipline);
+// 				$('.textCenterAcess').find('.deliveryDate').val(response.deliveryDate);
 // 				$('.textCenterAcess').find('.id').val(response.id);
-					
-				},
+			},
 			error : function(erro){
 				console.log(erro);
 			}
@@ -71,6 +82,10 @@ $(document).ready(function(){
 	<!--  CHAMADA MENU FIXO PARA USUÁRIO SEM ACESSO E SCRIPT/LINK BOOTSTRAP E JQUERY -->
 	<div id="header">
     	<jsp:include page="menuUserLogged.jsp"/>
+	</div>
+	
+	<div class="msg" style="margin: auto; text-align: center; color: red;margin-bottom: 40px;">
+			${message}
 	</div>
 	
 	<div class="container" style="margin-top: -30px;">
@@ -114,7 +129,7 @@ $(document).ready(function(){
 							<div>
 								<span style="color: darkblue;font-style: italic;">ID</span>
 							</div>
-							<input id="id" name="id" type="text" class="form-control id" style="margin:auto;margin-bottom: 15px;min-width: 197px;" placeholder="id">
+							<input id="id" name="id" readonly type="text" class="form-control id" style="margin:auto;margin-bottom: 15px;min-width: 197px;" placeholder="id">
 						</div>
 					</div>
 					<div class="form-group">
