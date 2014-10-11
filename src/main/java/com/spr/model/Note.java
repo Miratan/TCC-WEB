@@ -1,7 +1,6 @@
 package com.spr.model;
 
 import java.io.Serializable;
-import java.sql.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -22,7 +21,9 @@ public class Note implements Serializable{
 	private Integer noteId;
 	
 	private String userCreator;
-	private Date dateCreated;
+	
+	private String dateCreated;
+	
 	private String description;
 	
 	@ManyToOne(fetch = FetchType.EAGER)
@@ -45,14 +46,13 @@ public class Note implements Serializable{
 		this.userCreator = userCreator;
 	}
 
-	public Date getDateCreated() {
+	public String getDateCreated() {
 		return dateCreated;
 	}
-
-	public void setDateCreated(Date dateCreated) {
+	public void setDateCreated(String dateCreated) {
 		this.dateCreated = dateCreated;
 	}
-
+	
 	public Project getProject() {
 		return project;
 	}

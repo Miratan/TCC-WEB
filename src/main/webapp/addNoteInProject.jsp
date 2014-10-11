@@ -21,11 +21,7 @@ $(document).ready(function() {
 	var id = url.split("&");
 	
 	$('.container').data('projectid', id);
-	
-	var now = new Date();
-    var today = now.getDate()  + '/' + (now.getMonth() + 1) + '/' + now.getFullYear();
-    $('.container').find("#dataCriacao").val(today);
-    
+	$('#description').focus();
     
     $.ajax({
 			url : "project/searchNotes/"+id,
@@ -33,52 +29,28 @@ $(document).ready(function() {
 			success : function(response) {
 				console.log(response);
 				var tr 	= '<tr>';
+				var i = 1;
 				$.each(response, function(index, value) {
-					tr 	+= '	<td class="id">'+value.noteId+'</td>'
+					tr 	+= '	<td class="id">'+i+'</td>'
 						+  '	<td class="name">'+value.userCreator+'</td>'
 						+  '	<td class="data">'+value.dateCreated+'</td>'
 						+  '	<td class="description" style="word-break: break-all;">'+value.description+'</td>'
 						+  ' </tr>';
+						i++;
 				});
 			
 				$('.tbNotes').append(tr);
 			}
 		});
-    
-	
-// 	$('.btnSearchUser').off('click');
-// 	$('.btnSearchUser').on('click', function(){
-// 		var valueToSearch = $('#user').val();
-// 		console.log(valueToSearch);
-// 		$('.tbUsers').html('');
-// 	 	$.ajax({
-// 			url : "login/search/"+valueToSearch,
-// 			type : "GET",
-// 			success : function(response) {
-// 				console.log(response);
-// 				var tr = "";
-// 				$.each(response, function(index, value) {
-// 					tr 	+= '<tr data-idUser="'+value.userId+'" >'
-// 						+ '		<td style="width: 20%;word-break: break-word;word-wrap: break-word;" class="name">'+value.nameUser+'</td>'
-// 						+ '		<td style="width: 20%;word-break: break-word;word-wrap: break-word;" class="email">'+value.email+'</td>'
-// 						+ '		<td style="width: 20%;word-break: break-word;word-wrap: break-word;" class="course">'+value.course+'</td>'
-// 						+ ' 	<td style="width: 10%;word-break: break-word;word-wrap: break-word;text-align: center;"><input type="checkbox" name="edit"></td>'
-// 						+ '		<td style="width: 10%;word-break: break-word;word-wrap: break-word;text-align: center;"><input type="checkbox" name="view"></td>'
-// 						+ ' 	<td style="width: 10%;word-break: break-word;word-wrap: break-word;text-align: center;"><input type="checkbox" name="not"></td>'
-// 						+ '</tr>'
-// 				});
-				
-// 				$('.tbUsers').append(tr);
-// 			}
-// 		});
-// 	});
-	
+		
 	
 	$('.btnSaveNote').off('click');
 	$('.btnSaveNote').on('click', function(){
 		var projectId = $('.container').data('projectid');
 		var description = $('.container').find('#description').val();
 		var intProjectId = parseInt(projectId);
+		var nextId = $( "tr:last" ).find('.id').text();
+		nextId++;
 		$.ajax({
 			url : "project/createNote",
 			type : "POST",
@@ -87,7 +59,7 @@ $(document).ready(function() {
 			success : function(response) {
 // 				console.log(reponse);
 				var tr 	= '<tr>'
-						+ '		<td class="id">'+response.noteId+'</td>'
+						+ '		<td class="id">'+nextId+'</td>'
 						+ '		<td class="name">'+response.userCreator+'</td>'
 						+ '		<td class="data">'+response.dateCreated+'</td>'
 						+ '		<td class="description" style="word-break: break-all;">'+response.description+'</td>'
@@ -101,6 +73,11 @@ $(document).ready(function() {
 		});
 	});
 	
+	$('.btnClean').off('click');
+	$('.btnClean').on('click', function(){
+		$('#description').val('');
+		$('#description').focus();
+	});
 	
 });
 </script>
@@ -129,7 +106,7 @@ $(document).ready(function() {
 		
 		<div class="row">
 			<div class="col-md-12">
-				<span style="color: darkblue;font-style: italic;">Comentários</span>
+				<span style="color: darkblue;font-style: italic;" id="coment">Comentários</span>
 				<textarea rows="5" cols="200" maxlength="255" class="form-control" id="description" name="description" style="width: 100%;margin-bottom: 15px;max-width: 100%;" placeholder="Descrição"></textarea>
 			</div>
 <!-- 			<div class="col-md-2"> -->
@@ -141,7 +118,7 @@ $(document).ready(function() {
 			<div class="col-md-12" style="margin-bottom: 20px">
 				<div>
 					<button type="submit" class="btn btn-success btnSaveNote">Salvar</button>
-					<button type="submit" class="btn btn-warning">Limpar</button>
+					<button type="submit" class="btn btn-warning btnClean">Limpar</button>
 				</div>
 			</div>
 		</div>

@@ -154,7 +154,7 @@ public class ProjectController {
 			@RequestParam(value="date", required=false) Date date){
 		Note note = new Note();
 		note.setDescription(description);
-		note.setDateCreated(date);
+		note.setDateCreated(getCurrentDate());
 		note.setProject(projectService.findById(projectId));
 		return noteService.create(note);
 	}
@@ -164,5 +164,16 @@ public class ProjectController {
 		return noteService.findByProjectId(id);
 	}
 	
+	
+	public String getCurrentDate(){
+		java.text.DateFormat dateFormat = new java.text.SimpleDateFormat("yyyy/MM/dd");
+		java.util.Date date = new java.util.Date();
+		String today = dateFormat.format(date);
+		String dt[] = today.split("/");
+		String ano = dt[0];
+		String mes = dt[1];
+		String dia = dt[2];
+		return dia+"/"+mes+"/"+ano;
+	}
 	
 }
