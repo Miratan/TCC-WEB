@@ -45,7 +45,7 @@ public class Project implements Serializable {
 	private List<Note> note;
 	
 //	@JsonIgnore
-//	@OneToMany(mappedBy = "project", fetch = FetchType.LAZY)
+//	@OneToMany(mappedBy = "project", fetch = FetchType.LAZY, targetEntity = Permission.class)
 //	@Cascade({CascadeType.SAVE_UPDATE})
 //	private List<Permission> permission;
 

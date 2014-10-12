@@ -142,4 +142,9 @@ public class UserController {
 		return userService.findByName(valueToSearch);
 	}
 	
+	@RequestMapping(value="/userId/{id}", method = RequestMethod.GET)
+	public @ResponseBody User getUserById(@PathVariable int id){
+		return userService.findById(id);
+	}
+	
 }

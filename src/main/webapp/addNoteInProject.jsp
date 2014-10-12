@@ -57,7 +57,6 @@ $(document).ready(function() {
 			data: { "projectId":intProjectId,
 	            	"description":description},
 			success : function(response) {
-// 				console.log(reponse);
 				var tr 	= '<tr>'
 						+ '		<td class="id">'+nextId+'</td>'
 						+ '		<td class="name">'+response.userCreator+'</td>'
@@ -78,6 +77,11 @@ $(document).ready(function() {
 	$('.btnClean').on('click', function(){
 		$('#description').val('');
 		$('#description').focus();
+	});
+	
+	$('.container').find('.btnBack').off('click');
+	$('.container').find('.btnBack').on('click', function(){
+			window.location.href='http://localhost:8080/web-test/myProjects.jsp';
 	});
 	
 });
@@ -120,6 +124,7 @@ $(document).ready(function() {
 				<div>
 					<button type="submit" class="btn btn-success btnSaveNote">Salvar</button>
 					<button type="submit" class="btn btn-warning btnClean">Limpar</button>
+					<button type="submit" class="btn btn-warning btnBack" style="margin-left: 15px;float: right;">Voltar</button>
 				</div>
 			</div>
 		</div>

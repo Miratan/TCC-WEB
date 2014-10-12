@@ -12,7 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.codehaus.jackson.annotate.JsonIgnore;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
@@ -42,7 +41,7 @@ public class User implements Serializable {
 	private List<Project> project;
 	
 //	@JsonIgnore
-//	@OneToMany(mappedBy = "project", fetch = FetchType.LAZY)
+//	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, targetEntity = Permission.class)
 //	@Cascade({CascadeType.SAVE_UPDATE})
 //	private List<Permission> permission;
 	

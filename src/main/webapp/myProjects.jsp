@@ -60,7 +60,7 @@ $(document).ready(function() {
 				$('.tbProjects').find('.btnAddUser').on('click', function(){
 						var $tr = $(this).closest('tr');
 						var idTr = $tr.data('id');
-						window.location.href='http://localhost:8080/web-test/addUsersInProject.jsp?'+idTr+'';
+						window.location.href='http://localhost:8080/web-test/users.jsp?'+idTr+'';
 				});
 				
 				
