@@ -52,7 +52,14 @@ $(document).ready(function() {
 	<div id="header">
     	<jsp:include page="menuUserLogged.jsp"/>
 	</div>
-	<div class="container">
+	 <div class="container" style="margin-top: -30px;">
+	
+		<div class="titleTCC" style="width: 70%;margin: auto;">
+	
+			<h3 style="padding: 10px 15px;text-align: center;">
+				Permissões no Projeto
+			</h3>
+		</div>
 <!-- 		<div class="row"> -->
 <!-- 			<div class="col-md-5" style="text-align: center;"> -->
 <!-- 				<input id="user" name="user" maxlength="60" type="text" class="form-control user" style="width: 100%; margin-bottom: 15px;" placeholder="Pesquise por Usuários"> -->

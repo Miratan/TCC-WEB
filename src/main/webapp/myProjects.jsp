@@ -99,7 +99,14 @@ $(document).ready(function() {
     	<jsp:include page="menuUserLogged.jsp"/>
 	</div>
 		
-    	<div class="container" style="margin-top: 30px;">
+    	<div class="container" style="margin-top: -30px;">
+	
+		<div class="titleTCC" style="width: 70%;margin: auto;">
+	
+			<h3 style="padding: 10px 15px;text-align: center;">
+				Meus Projetos
+			</h3>
+		</div>
 		<div class="panel panel-default">
 <!-- 			<div class="panel-heading"> -->
 <!-- 			</div> -->

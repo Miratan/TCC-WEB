@@ -46,7 +46,14 @@ $(document).ready(function() {
     	<jsp:include page="menuUserLogged.jsp"/>
 	</div>
 	
-    <div class="container" style="margin-top: -20px;">
+    <div class="container" style="margin-top: -30px;">
+	
+		<div class="titleTCC" style="width: 70%;margin: auto;">
+	
+			<h3 style="padding: 10px 15px;text-align: center;">
+				Meu Cadastro
+			</h3>
+		</div>
     
     	<div class="textCenterAcess" style="text-align: center;">
 			<div class="col-md-12">
@@ -124,7 +131,7 @@ $(document).ready(function() {
 						</div>
 					</div>
 					<div class="form-group">
-						<div class="col-md-12">
+						<div class="col-md-12" style="margin-bottom: 100px;">
 							<div>
 								<button type="submit" class="btn btn-success" value="send">Atualizar</button>
 							</div>

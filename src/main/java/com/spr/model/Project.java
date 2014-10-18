@@ -27,10 +27,18 @@ public class Project implements Serializable {
 	@GeneratedValue
 	private Integer projectId;
 	
+	@Column(length=200)
 	private String title;
+	
+	@Column(length=3000)
 	private String description;
+	
+	@Column(length=60)
 	private String keyWords;
+	
+	@Column(length=30)
 	private String discipline;
+	
 	private Date deliveryDate;
 	
 	@Column(columnDefinition = "int(2) DEFAULT 0", insertable = false, updatable = true)

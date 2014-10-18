@@ -93,7 +93,13 @@ $(document).ready(function() {
 	<div id="header">
     	<jsp:include page="menuUserLogged.jsp"/>
 	</div>
-	<div class="container" style="margin-top: -20px" data-projectid="">
+	<div class="container" style="margin-top: -30px" data-projectid="">
+		<div class="titleTCC" style="width: 70%;margin: auto;">
+	
+			<h3 style="padding: 10px 15px;text-align: center;">
+				Comentários do Projeto
+			</h3>
+		</div>
 		<div class="col-md-12 panel panel-default" style="margin-top: 30px;">
 			<table class="table">
 				<thead>

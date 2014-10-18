@@ -25,15 +25,33 @@ public class User implements Serializable {
 	@GeneratedValue
 	private Integer userId;
 	
+	@Column(length=40)
 	private String name;
+	
+	@Column(length=6)
 	private String password;
+	
+	@Column(length=40)
 	private String nameUser;
+	
+	@Column(length=40)
 	private String city;
+	
 	private Date birthday;
+	
+	@Column(length=40)
 	private String country;
+	
+	@Column(length=40)
 	private String email;
+	
+	@Column(length=20)
 	private String college;
+	
+	@Column(length=20)
 	private String course;
+	
+	@Column(length=6)
 	private String semester;
 
 	@OneToMany(fetch = FetchType.EAGER)

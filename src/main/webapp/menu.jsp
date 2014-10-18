@@ -28,7 +28,7 @@
 
 <div class="titleTCC" style="width: 70%;margin: auto;">
 
-	<h1 style="padding: 60px 15px;text-align: center;">
+	<h1 style="padding: 50px 15px;text-align: center;font-size: 32px;">
 		Ferramenta Web de Acompanhamento e Versionamento de	Trabalhos Acadêmicos
 	</h1>
 </div>

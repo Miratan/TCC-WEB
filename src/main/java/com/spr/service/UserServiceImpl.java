@@ -49,27 +49,26 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	@Transactional(rollbackFor=UserNotFound.class)
 	public User update(User user) throws UserNotFound {
-//		User updatedUser = userRepository.findOne(user.getUserId());
-//		
-//		if (updatedUser == null)
-//			throw new UserNotFound();
-//		
-//		updatedUser.setName(user.getName());
-//		updatedUser.setPassword(user.getPassword());
-//		updatedUser.setBirthday(user.getBirthday());
-//		updatedUser.setCity(user.getCity());
-//		updatedUser.setCollege(user.getCollege());
-//		updatedUser.setCountry(user.getCountry());
-//		updatedUser.setCourse(user.getCourse());
-//		updatedUser.setEmail(user.getEmail());
-//		updatedUser.setNameUser(user.getNameUser());
-//		updatedUser.setSemester(user.getSemester());
+		User updatedUser = userRepository.findOne(user.getUserId());
 		
-//		userRepository.save(user);
+		if (updatedUser == null)
+			throw new UserNotFound();
 		
-		return userRepository.save(user);
+		updatedUser.setName(user.getName());
+		updatedUser.setPassword(user.getPassword());
+		updatedUser.setBirthday(user.getBirthday());
+		updatedUser.setCity(user.getCity());
+		updatedUser.setCollege(user.getCollege());
+		updatedUser.setCountry(user.getCountry());
+		updatedUser.setCourse(user.getCourse());
+		updatedUser.setEmail(user.getEmail());
+		updatedUser.setNameUser(user.getNameUser());
+		updatedUser.setSemester(user.getSemester());
+		
+		userRepository.saveAndFlush(user);
+			
+		return updatedUser;
 	}
 
 	@Override

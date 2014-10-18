@@ -15,7 +15,14 @@
     	<jsp:include page="menuUserLogged.jsp"/>
 	</div>
 	
-    <div class="container">
+   <div class="container" style="margin-top: -30px;">
+	
+		<div class="titleTCC" style="width: 70%;margin: auto;">
+	
+			<h3 style="padding: 10px 15px;text-align: center;">
+				Novo Projeto
+			</h3>
+		</div>
     
     	<div class="textCenterAcess" style="text-align: center;">
 			<div class="col-md-12">

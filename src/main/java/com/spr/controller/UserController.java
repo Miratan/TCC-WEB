@@ -101,7 +101,7 @@ public class UserController {
 	@RequestMapping(value="/edit/{userId}",  method = RequestMethod.POST)  
 	public ModelAndView editUserLoggedNewInputs(@ModelAttribute User user, @PathVariable int userId) throws Exception {
 		
-		if(user.getPassword() == null || user.getPassword().trim().equals("")){
+		if(user.getPassword() == "****"){
 			User userOld = userService.findById(userId);
 			user.setPassword(userOld.getPassword());
 		}
