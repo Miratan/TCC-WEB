@@ -39,7 +39,8 @@ $(document).ready(function() {
 				<li><a href="myProjects.jsp">Meus Projetos</a></li>
 				<li><a href="newProject.jsp">Novo Projeto</a></li>
 				<li><a href="myAccount.jsp">Meus Dados</a></li>
-            	<li class="nameInfo" style="margin-top: 15px;font-size: 15px;color: darkgray;margin-left: 385px;"></li>
+				<li><a href="othersProjects.jsp">Outros Projetos</a></li>
+            	<li class="nameInfo" style="margin-top: 15px;font-size: 15px;color: darkgray;margin-left: 300px;"></li>
           		<li style="margin-left: 5px;"><a class="navbar-brand glyphicon glyphicon-off" href="${pageContext.request.contextPath}/authentication/logout"></a></li>
 			</ul>
 		</div>

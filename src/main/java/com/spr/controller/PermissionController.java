@@ -33,7 +33,7 @@ public class PermissionController {
 			@RequestParam(value="edit", required=false) boolean edit,
 			@RequestParam(value="idpermission", required=false) Integer idpermission){
 		
-		if(idpermission > 0){
+		if(idpermission != null && idpermission > 0){
 			Permission permission = permissionService.findById(idpermission);
 			permission.setEdit(edit);
 			permission.setView(view);
