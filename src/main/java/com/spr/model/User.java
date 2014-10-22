@@ -14,6 +14,7 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
+import org.hibernate.validator.constraints.Length;
 
 @Entity
 @Table
@@ -24,45 +25,43 @@ public class User implements Serializable {
 	@Id
 	@GeneratedValue
 	private Integer userId;
-	
-	@Column(length=40)
-	private String name;
-	
-	@Column(length=6)
+
+	@Length(max = 40)
+	private String username;
+
+	@Length(max = 10)
 	private String password;
-	
-	@Column(length=40)
-	private String nameUser;
-	
-	@Column(length=40)
+
+	@Length(max = 40)
+	private String name;
+
+	@Length(max = 40)
 	private String city;
-	
+
 	private Date birthday;
-	
-	@Column(length=40)
+
+	@Length(max = 40)
 	private String country;
-	
-	@Column(length=40)
+
+	@Length(max = 40)
 	private String email;
-	
-	@Column(length=20)
+
+	@Length(max = 40)
 	private String college;
-	
-	@Column(length=20)
+
+	@Length(max = 40)
 	private String course;
-	
-	@Column(length=6)
+
+	@Length(max = 10)
 	private String semester;
 
 	@OneToMany(fetch = FetchType.EAGER)
-	@Cascade({CascadeType.SAVE_UPDATE})
+	@Cascade({ CascadeType.SAVE_UPDATE })
 	private List<Project> project;
-	
-//	@JsonIgnore
-//	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, targetEntity = Permission.class)
-//	@Cascade({CascadeType.SAVE_UPDATE})
-//	private List<Permission> permission;
-	
+
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, targetEntity = Permission.class)
+	private List<Permission> permission;
+
 	@Column(columnDefinition = "int(2) DEFAULT 0", insertable = false, updatable = true)
 	private Integer version;
 
@@ -82,12 +81,12 @@ public class User implements Serializable {
 		this.userId = userId;
 	}
 
-	public String getName() {
-		return name;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getPassword() {
@@ -98,12 +97,12 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-	public String getNameUser() {
-		return nameUser;
+	public String getName() {
+		return name;
 	}
 
-	public void setNameUser(String nameUser) {
-		this.nameUser = nameUser;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getCity() {
@@ -161,7 +160,7 @@ public class User implements Serializable {
 	public void setSemester(String semester) {
 		this.semester = semester;
 	}
-	
+
 	public Integer getVersion() {
 		return version;
 	}
@@ -169,13 +168,5 @@ public class User implements Serializable {
 	public void setVersion(Integer version) {
 		this.version = version;
 	}
-	
-//	public List<Permission> getPermission() {
-//		return permission;
-//	}
-//
-//	public void setPermission(List<Permission> permission) {
-//		this.permission = permission;
-//	}
 
 }

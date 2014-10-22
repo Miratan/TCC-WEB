@@ -164,6 +164,18 @@ public class ProjectController {
 		return noteService.findByProjectId(id);
 	}
 	
+//	@RequestMapping(value="/findProjectPermission/{id}/{userId}", method = RequestMethod.GET)
+//	public @ResponseBody Project getProjectPermission(@PathVariable Integer id,
+//			@PathVariable Integer userId){
+//		return projectService.findProject(id, userId);
+//	}
+	
+	@RequestMapping(value="/permission/{id}/{userId}", method = RequestMethod.GET)
+	public @ResponseBody Permission getPermission(@PathVariable Integer id,
+			@PathVariable Integer userId){
+		return permissionService.findPermission(id, userId);
+	}
+	
 	
 	public String getCurrentDate(){
 		java.text.DateFormat dateFormat = new java.text.SimpleDateFormat("yyyy/MM/dd");

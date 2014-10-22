@@ -9,17 +9,14 @@
 <script type="text/javascript">
 
 $(document).ready(function() {
-
 	$.ajax({
-		url : "login/userLogged",
+		url : "authentication/userLogged",
 		type : "GET",
-
 		success : function(response) {
 			console.log(response);
-			$('.nameUser').html("Olá, "+response);
+			$('.nameInfo').html("Olá, "+response);
 		}
 	});
- 
 });
 
 </script>
@@ -42,8 +39,8 @@ $(document).ready(function() {
 				<li><a href="myProjects.jsp">Meus Projetos</a></li>
 				<li><a href="newProject.jsp">Novo Projeto</a></li>
 				<li><a href="myAccount.jsp">Meus Dados</a></li>
-            	<li class="nameUser" style="margin-top: 15px;font-size: 15px;color: darkgray;margin-left: 385px;"></li>
-          		<li style="margin-left: 5px;"><a class="navbar-brand glyphicon glyphicon-off" href="${pageContext.request.contextPath}/login/logout"></a></li>
+            	<li class="nameInfo" style="margin-top: 15px;font-size: 15px;color: darkgray;margin-left: 385px;"></li>
+          		<li style="margin-left: 5px;"><a class="navbar-brand glyphicon glyphicon-off" href="${pageContext.request.contextPath}/authentication/logout"></a></li>
 			</ul>
 		</div>
 		<!--/.nav-collapse -->

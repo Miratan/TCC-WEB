@@ -1,4 +1,4 @@
-package com.spr.service;
+package com.spr.service.impl;
 
 import java.util.List;
 
@@ -11,6 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.spr.exception.ProjectNotFound;
 import com.spr.model.Project;
 import com.spr.repository.ProjectRepository;
+import com.spr.service.ProjectService;
+import com.spr.service.UserService;
 import com.spr.session.UserSession;
 
 @Service
@@ -91,5 +93,10 @@ public class ProjectServiceImpl implements ProjectService {
 	public List<Project> findAllByUserId(Integer userId) {
 		return projectRepository.findByUserId(userId);
 	}
+
+//	@Override
+//	public Project findProject(int projectId, int userId) {
+//		return projectRepository.findProject(projectId, userId);
+//	}
 
 }

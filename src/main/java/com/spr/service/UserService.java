@@ -13,5 +13,6 @@ public interface UserService {
 	public User update(User user) throws UserNotFound;
 	public User findById(int id);
 	public List<User> findByName(String name);
+	public List<User> findAllWithoutLogged(int id);
 
 }

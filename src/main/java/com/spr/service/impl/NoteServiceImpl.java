@@ -1,4 +1,4 @@
-package com.spr.service;
+package com.spr.service.impl;
 
 import java.util.List;
 
@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import com.spr.model.Note;
 import com.spr.repository.NoteRepository;
+import com.spr.service.NoteService;
+import com.spr.service.UserService;
 import com.spr.session.UserSession;
 
 @Service
@@ -25,7 +27,7 @@ public class NoteServiceImpl implements NoteService {
 
 	@Override
 	public Note create(Note note) {
-		note.setUserCreator(userSession.getUserLogado().getNameUser());
+		note.setUserCreator(userSession.getUserLogado().getName());
 		return noteRepository.save(note);
 	}
 

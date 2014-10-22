@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,8 +18,8 @@ import com.spr.service.UserService;
 import com.spr.session.UserSession;
 
 @Controller
-@SessionAttributes("login")
-@RequestMapping("/login")
+@SessionAttributes("user")
+@RequestMapping("/user")
 public class UserController {
 	
 	@Autowired
@@ -29,60 +28,11 @@ public class UserController {
 	@Autowired
 	private UserSession userSession;
 
-	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView userLogged(@RequestParam(required = true) String name, String password) {
-		
-		if(name.equals("god") && password.equals("secret")){
-			ModelAndView mav = new ModelAndView("indexGod");
-			mav.setViewName("indexGod");
-			return mav;
-		}
-		
-		
-		List<User> users = userService.findAll();
-		User userSet = null;
-		
-		for(User list: users){
-			if(list.getName().equals(name) && list.getPassword().equals(password)){
-				userSet = list;
-				try {
-					userSession.logarUser(userSet);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				ModelAndView mav = new ModelAndView("myProjects");
-//				mav.addObject("userLogged", name);
-				mav.setViewName("myProjects");
-				return mav;
-			}
-		}
-		
-		ModelAndView mav = new ModelAndView("login");
-		mav.addObject("errorLogin", "Usuário e/ou Senha inválido(s)!");
-		mav.setViewName("login");
-		return mav;
-		
-	}
-	
 	@RequestMapping(value="/create", method = RequestMethod.POST)
 	public @ResponseBody ModelAndView createUser(@ModelAttribute User user){
 		userService.create(user);
 		ModelAndView mav = new ModelAndView("login");
 		mav.addObject("errorLogin", "Cadastro realizado com sucesso!");
-		mav.setViewName("login");
-		return mav;
-	}
-	
-	@RequestMapping(value="/logout")  
-	public @ResponseBody ModelAndView logout() {
-		try {
-			userSession.logout();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		ModelAndView mav = new ModelAndView("login");
-		mav.addObject("errorLogin", "Sessão finalizada!");
 		mav.setViewName("login");
 		return mav;
 	}
@@ -107,7 +57,6 @@ public class UserController {
 		}
 		
 		user.setUserId(userId);
-//		user.setId(userId);
 		try {
 			userService.update(user);
 			userSession.logout();
@@ -123,18 +72,21 @@ public class UserController {
 		return mav;
 	}
 	
-	@RequestMapping(value = "/userLogged", method = RequestMethod.GET)
-	public @ResponseBody String userLogged() {
-		String response = "";
-		response = userSession.getUserLogado().getNameUser().toString();
-		return response;
-	}
-	
 	@RequestMapping(value = "/user", method = RequestMethod.GET)
 	public @ResponseBody User user() {
 		
 		User user = userSession.getUserLogado();
 		return user;
+	}
+	
+	@RequestMapping(value = "/allUser", method = RequestMethod.GET)
+	public @ResponseBody List<User> allUser() {
+		return userService.findAll();
+	}
+	
+	@RequestMapping(value = "/allUserWithoutLogged", method = RequestMethod.GET)
+	public @ResponseBody List<User> allUserWithoutLogged() {
+		return userService.findAllWithoutLogged(userSession.getUserLogado().getUserId());
 	}
 	
 	@RequestMapping(value = "/search/{valueToSearch}", method = RequestMethod.GET)

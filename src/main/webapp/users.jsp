@@ -21,15 +21,17 @@ $(document).ready(function() {
 	
 	$('.tbUsers').data('projectid', id);
 
+	
+//  GET ALL USERS - WITHOUT USER LOGGED
 	$.ajax({
-		url : "god/allUser",
+		url : "user/allUserWithoutLogged",
 		type : "GET",
 		success : function(response) {
 			var tr = "";
 			console.log(response);
 			$.each(response, function(index, value) {
 				tr 	+= '<tr data-id="'+value.userId+'">'
-					+ '		<td>'+value.nameUser+'</td>'
+					+ '		<td>'+value.name+'</td>'
 					+ '		<td>'+value.email+'</td>'
 					+ '		<td>'+value.course+'</td>'
 					+ '		<td style="text-align:center;"><span class="glyphicon glyphicon-wrench btnAddPermission" style="color: darkblue;cursor:pointer;"></span></td>'

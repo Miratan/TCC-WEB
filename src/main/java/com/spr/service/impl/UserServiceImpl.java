@@ -1,4 +1,4 @@
-package com.spr.service;
+package com.spr.service.impl;
 
 import java.util.List;
 
@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.spr.exception.UserNotFound;
 import com.spr.model.User;
 import com.spr.repository.UserRepository;
+import com.spr.service.UserService;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -55,7 +56,7 @@ public class UserServiceImpl implements UserService {
 		if (updatedUser == null)
 			throw new UserNotFound();
 		
-		updatedUser.setName(user.getName());
+		updatedUser.setUsername(user.getUsername());
 		updatedUser.setPassword(user.getPassword());
 		updatedUser.setBirthday(user.getBirthday());
 		updatedUser.setCity(user.getCity());
@@ -63,7 +64,7 @@ public class UserServiceImpl implements UserService {
 		updatedUser.setCountry(user.getCountry());
 		updatedUser.setCourse(user.getCourse());
 		updatedUser.setEmail(user.getEmail());
-		updatedUser.setNameUser(user.getNameUser());
+		updatedUser.setName(user.getName());
 		updatedUser.setSemester(user.getSemester());
 		
 		userRepository.saveAndFlush(user);
@@ -74,6 +75,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<User> findByName(String name) {
 		return userRepository.findByName(name);
+	}
+
+	@Override
+	public List<User> findAllWithoutLogged(int id) {
+		return userRepository.findAllWithoutLogged(id);
 	}
 
 }

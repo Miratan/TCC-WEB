@@ -1,9 +1,12 @@
-package com.spr.service;
+package com.spr.service.impl;
 
 import javax.annotation.Resource;
+
 import org.springframework.stereotype.Service;
+
 import com.spr.model.Permission;
 import com.spr.repository.PermissionRepository;
+import com.spr.service.PermissionService;
 
 @Service
 public class PermissionServiceImpl implements PermissionService {
@@ -14,6 +17,22 @@ public class PermissionServiceImpl implements PermissionService {
 	@Override
 	public Permission create(Permission permission) {
 		return permissionRepository.save(permission);
+	}
+
+	@Override
+	public Permission findPermission(int id, int userId) {
+		return permissionRepository.findPermission(id, userId);
+	}
+
+	@Override
+	public Permission update(Permission permission) {
+		permissionRepository.saveAndFlush(permission);
+		return permissionRepository.findPermission(permission.getProject().getProjectId(), permission.getUser().getUserId());
+	}
+
+	@Override
+	public Permission findById(int id) {
+		return permissionRepository.findOne(id);
 	}
 
 //	@Override

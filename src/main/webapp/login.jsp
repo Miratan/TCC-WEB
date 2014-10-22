@@ -45,9 +45,9 @@
 	<div class="textCenterAcess">
 		<div class="col-md-12">
 			<div class="row">
-			<form:form method="post" action="/login">
+			<form:form method="POST" action="/authentication">
 				<div class="col-md-2 input-group" style="margin:auto;margin-bottom: 15px;">
-					<input style="border-radius: 5px;width: 100%;!important" name="name" type="text"
+					<input style="border-radius: 5px;width: 100%;!important" name="username" type="text"
 						class="form-control" placeholder="Usuário">
 				</div>
 				<div class="col-md-2 input-group" style="margin:auto;margin-bottom: 15px;">

@@ -16,12 +16,12 @@
 $(document).ready(function() {
 
 	$.ajax({
-		url : "login/user",
+		url : "user/user",
 		type : "GET",
 		success : function(response) {
 			console.log(response);
+			$('#username').val(response.username);
 			$('#name').val(response.name);
-			$('#userName').val(response.nameUser);
 			$('#email').val(response.email);
 			$('#birthday').val(response.birthday);
 			$('#city').val(response.city);
@@ -63,7 +63,7 @@ $(document).ready(function() {
 							<div class="row">
 								<span style="color: darkblue;font-style: italic;">Usuário</span>
 							</div>
-							<input id="name" name="name" type="text" class="form-control" style="margin:auto;margin-bottom: 15px;text-align:center;" placeholder="Usuário">
+							<input id="username" name="username" type="text" class="form-control" style="margin:auto;margin-bottom: 15px;text-align:center;" placeholder="Usuário">
 						</div>
 						<div class="col-md-4 col-md-offset-0">
 							<div class="row">
@@ -78,7 +78,7 @@ $(document).ready(function() {
 							<div class="row">
 								<span style="color: darkblue;font-style: italic;">Nome Completo</span>
 							</div>
-							<input id="userName" name="nameUser" type="text" class="form-control" style="margin:auto;margin-bottom: 15px;text-align:center;" placeholder="Nome Completo">
+							<input id="name" name="name" type="text" class="form-control" style="margin:auto;margin-bottom: 15px;text-align:center;" placeholder="Nome Completo">
 						</div>
 						<div class="col-md-4 col-md-offset-0">
 							<div class="row">

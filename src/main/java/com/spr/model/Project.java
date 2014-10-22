@@ -52,10 +52,8 @@ public class Project implements Serializable {
 	@Cascade({CascadeType.SAVE_UPDATE})
 	private List<Note> note;
 	
-//	@JsonIgnore
-//	@OneToMany(mappedBy = "project", fetch = FetchType.LAZY, targetEntity = Permission.class)
-//	@Cascade({CascadeType.SAVE_UPDATE})
-//	private List<Permission> permission;
+	@OneToMany(mappedBy = "project", fetch = FetchType.LAZY, targetEntity = Permission.class)
+	private List<Permission> permission;
 
 	public Integer getProjectId() {
 		return projectId;

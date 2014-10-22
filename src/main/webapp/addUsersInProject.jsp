@@ -22,25 +22,99 @@ $(document).ready(function() {
 	var idProject = element[1];
 	
 	$.ajax({
-		url : "login/userId/"+idUser,
+		url : "project/permission/"+idProject+"/"+idUser,
 		type : "GET",
 		success : function(response) {
-			var tr = "";
-			console.log(response);
-			tr 	+= '<tr data-id="'+response.userId+'">'
-				+ '		<td>'+response.nameUser+'</td>'
-				+ '		<td>'+response.email+'</td>'
-				+ '		<td>'+response.course+'</td>'
-				+ ' 	<td style="width: 10%;word-break: break-word;word-wrap: break-word;text-align: center;"><input type="checkbox" name="edit"></td>'
-				+ '		<td style="width: 10%;word-break: break-word;word-wrap: break-word;text-align: center;"><input type="checkbox" name="view"></td>'
+			if(!response){
+
+				$.ajax({
+					url : "user/userId/"+idUser,
+					type : "GET",
+					success : function(response) {
+						
+						var tr = "";
+						tr 	+= '<tr data-userId="'+response.userId+'" data-projectId="'+idProject+'">'
+						+ '		<td>'+response.name+'</td>'
+						+ '		<td>'+response.email+'</td>'
+						+ '		<td>'+response.course+'</td>'
+						+ ' 	<td style="width: 10%;word-break: break-word;word-wrap: break-word;text-align: center;"><input type="checkbox" id="edit" name="edit"></td>'
+						+ '		<td style="width: 10%;word-break: break-word;word-wrap: break-word;text-align: center;"><input type="checkbox" id="view" name="view"></td>'
+						+ '</tr>';
+						
+						$('.tbUsers').append(tr);
+					}
+				});
+				
+			}else{
+				var tr = "";
+				tr 	+= '<tr data-permissionId="'+response.permissionId+'" data-userId="'+response.user.userId+'" data-projectId="'+response.project.projectId+'">'
+				+ '		<td>'+response.user.name+'</td>'
+				+ '		<td>'+response.user.email+'</td>'
+				+ '		<td>'+response.user.course+'</td>'
+				+ ' 	<td style="width: 10%;word-break: break-word;word-wrap: break-word;text-align: center;"><input type="checkbox" id="edit" name="edit"></td>'
+				+ '		<td style="width: 10%;word-break: break-word;word-wrap: break-word;text-align: center;"><input type="checkbox" id="view" name="view"></td>'
 				+ '</tr>';
-			$('.tbUsers').append(tr);
+				
+				$('.tbUsers').append(tr);
+					
+				if(response.edit == true){
+					$('#edit').prop('checked', true);
+				}
+				if(response.view == true){
+					$('#view').prop('checked', true);
+				}
+			}
 		}
 	});
 	
 	$('.container').find('.btn-warning').off('click');
 	$('.container').find('.btn-warning').on('click', function(){
-			window.location.href='http://localhost:8080/web-test/users.jsp';
+			window.location.href='http://localhost:8080/web-test/users.jsp?'+idProject;
+	});
+	
+	$('.container').find('.btnSavePermissions').off('click');
+	$('.container').find('.btnSavePermissions').on('click', function(){
+		var edit = $('.tbUsers').find('tr').find('#edit').is(':checked');
+		var view = $('.tbUsers').find('tr').find('#view').is(':checked');
+		var idpermission = $('.tbUsers').find('tr').data('permissionid');
+		var typeSend = "PUT";
+		var idUser = $('.tbUsers').find('tr').data('userid');
+		var projectId = $('.tbUsers').find('tr').data('projectid');
+		typeSend = "POST";
+		$('.tbUsers').find('tr').remove();
+			$.ajax({
+				url : "permission",
+				type : typeSend,
+				data: { "idUser":idUser,
+		            	"projectId":projectId,
+		            	"view":view,
+		            	"edit":edit,
+		            	"idpermission":idpermission},
+				success : function(response) {
+					console.log(response);
+					var tr = "";
+					tr 	+= '<tr data-permissionId="'+response.permissionId+'" data-userId="'+response.user.userId+'" data-projectId="'+response.project.projectId+'">'
+					+ '		<td>'+response.user.name+'</td>'
+					+ '		<td>'+response.user.email+'</td>'
+					+ '		<td>'+response.user.course+'</td>'
+					+ ' 	<td style="width: 10%;word-break: break-word;word-wrap: break-word;text-align: center;"><input type="checkbox" id="edit" name="edit"></td>'
+					+ '		<td style="width: 10%;word-break: break-word;word-wrap: break-word;text-align: center;"><input type="checkbox" id="view" name="view"></td>'
+					+ '</tr>';
+					
+					$('.tbUsers').append(tr);
+						
+					if(response.edit == true){
+						$('#edit').prop('checked', true);
+					}
+					if(response.view == true){
+						$('#view').prop('checked', true);
+					}
+				},
+				error : function(data){
+					console.log(data);
+				}
+			});
+		
 	});
 	
 });
