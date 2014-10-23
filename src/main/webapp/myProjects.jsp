@@ -132,50 +132,12 @@ $(document).ready(function() {
 								tr	+= '</tr>';
 								$('.tbProjects').append(tr);
 								
-								
-								$('.tbProjects').find('.btnEdit').off('click');
-								$('.tbProjects').find('.btnEdit').on('click', function(){
-										var $tr = $(this).closest('tr');
-										var idTr = $tr.data('id');
-										window.location.href='http://localhost:8080/web-test/editProjectGeneric.jsp?'+idTr+'';
-								});
-								
 								$('.tbProjects').find('.btnAddNote').off('click');
 								$('.tbProjects').find('.btnAddNote').on('click', function(){
 										var $tr = $(this).closest('tr');
 										var idTr = $tr.data('id');
 										window.location.href='http://localhost:8080/web-test/addNoteInProject.jsp?'+idTr+'';
 								});
-								
-								$('.tbProjects').find('.btnAddUser').off('click');
-								$('.tbProjects').find('.btnAddUser').on('click', function(){
-										var $tr = $(this).closest('tr');
-										var idTr = $tr.data('id');
-										window.location.href='http://localhost:8080/web-test/users.jsp?'+idTr+'';
-								});
-								
-								
-								$('.tbProjects').find('.btnDelete').off('click');
-								$('.tbProjects').find('.btnDelete').on('click', function(){
-									console.log("delete projeto");
-									var $trRemove = $(this).closest('tr');
-									var idRemove = $trRemove.data('id');
-									console.log("ID: "+ idRemove);
-									
-									$.ajax({
-									    url: 'project/deleteProject/'+idRemove,
-									    type: 'DELETE',
-									    success: function(result) {
-									    	console.log(result);
-									    }
-									}).done(function() {
-										location.reload();
-									}).fail(function(par1, par2, par3) {
-									}).always(function() {
-									});
-									
-								});
-								
 								
 							}
 						});
