@@ -33,14 +33,14 @@
 	
 		<div class="textCenterAcess" style="text-align: center;">
 			<div class="col-md-12">
-				<form:form  method="post" action="/login/create">
+				<form:form  method="post" action="/user/create">
 				
 					<div class="form-inline">
 						<div class="col-md-4 col-md-offset-2">
 							<div class="row">
 								<span style="color: darkblue;font-style: italic;">Usuário</span>
 							</div>
-							<input id="name" name="name" type="text" class="form-control" style="margin:auto;margin-bottom: 15px;text-align:center;" placeholder="Usuário">
+							<input id="username" name="username" type="text" class="form-control" style="margin:auto;margin-bottom: 15px;text-align:center;" placeholder="Usuário">
 						</div>
 						<div class="col-md-4 col-md-offset-0">
 							<div class="row">
@@ -55,7 +55,7 @@
 							<div class="row">
 								<span style="color: darkblue;font-style: italic;">Nome Completo</span>
 							</div>
-							<input id="userName" name="nameUser" type="text" class="form-control" style="margin:auto;margin-bottom: 15px;text-align:center;" placeholder="Nome Completo">
+							<input id="name" name="name" type="text" class="form-control" style="margin:auto;margin-bottom: 15px;text-align:center;" placeholder="Nome Completo">
 						</div>
 						<div class="col-md-4 col-md-offset-0">
 							<div class="row">

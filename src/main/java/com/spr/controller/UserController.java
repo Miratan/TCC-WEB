@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.spr.exception.UserNotFound;
@@ -18,7 +17,7 @@ import com.spr.service.UserService;
 import com.spr.session.UserSession;
 
 @Controller
-@SessionAttributes("user")
+//@SessionAttributes("user")
 @RequestMapping("/user")
 public class UserController {
 	
