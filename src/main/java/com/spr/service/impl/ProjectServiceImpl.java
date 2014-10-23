@@ -32,17 +32,7 @@ public class ProjectServiceImpl implements ProjectService {
 	public Project create(Project project){
 		Project createdProject = project;
 		createdProject.setUser(userService.findById(userSession.getUserLogado().getUserId()));
-//		createdProject.setUser(userSession.getUserLogado());
 		projectRepository.save(createdProject);
-//		UserProjectId id = new UserProjectId();
-//		id.setProject(createdProject);
-//		id.setUser(userSession.getUserLogado());
-//		
-//		UserProject userProject = new UserProject();
-//		userProject.setId(id);
-//		
-//		userProjectRepository.save(userProject);
-		
 		return createdProject;
 	}
 
@@ -55,13 +45,10 @@ public class ProjectServiceImpl implements ProjectService {
 	@Override
 	public Project delete(int id) throws ProjectNotFound {
 		Project deleteProject = projectRepository.findOne(id);
-		
 		if(deleteProject == null){
 			throw new ProjectNotFound();
 		}
-		
 		projectRepository.delete(deleteProject);
-		
 		return deleteProject;
 	}
 
@@ -94,9 +81,9 @@ public class ProjectServiceImpl implements ProjectService {
 		return projectRepository.findByUserId(userId);
 	}
 
-//	@Override
-//	public Project findProject(int projectId, int userId) {
-//		return projectRepository.findProject(projectId, userId);
-//	}
+	@Override
+	public List<Project> collaborativeProjects(Integer userId) {
+		return projectRepository.collaborativeProject(userId);
+	}
 
 }

@@ -89,35 +89,10 @@ public class ProjectController {
 		return "Projeto Atualizado com Sucesso";
 	}
 	
-	@RequestMapping(value="/updateUserPermissions", method = RequestMethod.POST)
-	public @ResponseBody ModelAndView updateProject(
-			@RequestParam(value="edit", required=false) boolean edit,
-			@RequestParam(value="view", required=false) boolean view,
-			@RequestParam(value="idUser", required=false) Integer idUser,
-			@RequestParam(value="projectId", required=false) Integer projectId){
-		
-//		Project project = projectService.findById(projectId);
-//		User user = userService.findById(idUser);
-		Permission permission = new Permission();
-		permission.setEdit(edit);
-		permission.setView(view);
-		permission.setProject(projectService.findById(projectId));
-		permission.setUser(userService.findById(userSession.getUserLogado().getUserId()));
-		
-		permissionService.create(permission);
-		
-//		ModelAndView mav = new ModelAndView("myProjects");
-//		mav.addObject("msg", "Projeto Alterado com sucesso!");
-//		mav.setViewName("myProjects");
-		return null;
-	}
-	
-	
 	@RequestMapping(value="/findUserLogged", method = RequestMethod.GET)
 	public @ResponseBody List<Project> getProjectUserLogged(){
 		User user = userService.findById(userSession.getUserLogado().getUserId());
 		return (List<Project>) projectService.findAllByUserId(user.getUserId());
-//		return projectRepository.findByUserId(user.getUserId());
 	}
 	
 	@RequestMapping(value = "/allProject", method = RequestMethod.GET)
@@ -125,7 +100,6 @@ public class ProjectController {
 		User user = userService.findById(userSession.getUserLogado().getUserId());
 		return projectRepository.findByUserId(user.getUserId());
 	}
-	
 	
 	@RequestMapping(value="/deleteProject/{projectId}", method = RequestMethod.DELETE)
 	public @ResponseBody List<Project> deleProjectGetProjects(@PathVariable Integer projectId){
@@ -139,8 +113,6 @@ public class ProjectController {
 		User user = userService.findById(userSession.getUserLogado().getUserId());
 		return (List<Project>) projectService.findAllByUserId(user.getUserId());
 	}
-	
-	
 	
 	@RequestMapping(value="/findById/{id}", method = RequestMethod.GET)
 	public @ResponseBody Project getProjectById(@PathVariable Integer id){
@@ -164,18 +136,14 @@ public class ProjectController {
 		return noteService.findByProjectId(id);
 	}
 	
-//	@RequestMapping(value="/findProjectPermission/{id}/{userId}", method = RequestMethod.GET)
-//	public @ResponseBody Project getProjectPermission(@PathVariable Integer id,
-//			@PathVariable Integer userId){
-//		return projectService.findProject(id, userId);
-//	}
-	
 	@RequestMapping(value="/permission/{id}/{userId}", method = RequestMethod.GET)
 	public @ResponseBody Permission getPermission(@PathVariable Integer id,
 			@PathVariable Integer userId){
+		if(userId == -10){
+			userId = userSession.getUserLogado().getUserId();
+		}
 		return permissionService.findPermission(id, userId);
 	}
-	
 	
 	public String getCurrentDate(){
 		java.text.DateFormat dateFormat = new java.text.SimpleDateFormat("yyyy/MM/dd");
@@ -186,6 +154,11 @@ public class ProjectController {
 		String mes = dt[1];
 		String dia = dt[2];
 		return dia+"/"+mes+"/"+ano;
+	}
+	
+	@RequestMapping(value = "/collaborativeProjects", method = RequestMethod.GET)
+	public @ResponseBody List<Project> getCollaborativeProjects(){
+		return projectService.collaborativeProjects(userSession.getUserLogado().getUserId());
 	}
 	
 }

@@ -15,7 +15,8 @@
 <script type="text/javascript">
 
 $(document).ready(function() {
-
+	
+	//GET - PROJETOS DO USUÁRIO LOGADO
 	$.ajax({
 		url : "project/findUserLogged",
 		type : "GET",
@@ -89,7 +90,102 @@ $(document).ready(function() {
 		});
 	
 	
-	});
+	//GET - PROJETOS QUE USUÁRIO COLABORA
+	$.ajax({
+		url : "project/collaborativeProjects",
+		type : "GET",
+		success : function(response) {
+				console.log(response);
+				var tr = "";
+				$.each(response, function(index, value) {
+					
+					var projectId = value.projectId;
+					var userId = -10;
+					
+					var data = value.deliveryDate;
+					var res = data.split("-");
+					var dataFinal = res[2]+'/'+res[1]+'/'+res[0];
+					
+					tr 	+= '<tr data-id="'+value.projectId+'">'
+						+ '		<td style="width: 25%;word-break: break-word;word-wrap: break-word;" class="name">'+value.title+'</td>'
+						+ '		<td style="width: 40%;word-break: break-word;word-wrap: break-word;" class="desc">'+value.description+'</td>'
+						+ '		<td class="date">'+dataFinal+'</td>';
+						
+					var tds;
+					$.ajax({
+						url : "project/permission/"+projectId+"/"+userId,
+						type : "GET",
+						success : function(response) {
+								console.log(response);
+								if(response.edit == true){
+									tr	+= ' 	<td data-editpermission="'+response.edit+'"><span class="glyphicon glyphicon-comment btnAddNote" style="color: coral;cursor:pointer;"></span></td>';
+								}else
+									if(response.view == true){
+										tr	+= ' 	<td data-viewpermission="'+response.view+'"><span class="glyphicon glyphicon-comment btnAddNote" style="color: coral;cursor:pointer;"></span></td>';
+										
+									}else{
+										tr	+= ' 	<td></td>';
+									}
+								tr += ' 	<td></td>'
+									+ ' 	<td></td>'
+									+ ' 	<td></td>';
+								tr	+= '</tr>';
+								$('.tbProjects').append(tr);
+								
+								
+								$('.tbProjects').find('.btnEdit').off('click');
+								$('.tbProjects').find('.btnEdit').on('click', function(){
+										var $tr = $(this).closest('tr');
+										var idTr = $tr.data('id');
+										window.location.href='http://localhost:8080/web-test/editProjectGeneric.jsp?'+idTr+'';
+								});
+								
+								$('.tbProjects').find('.btnAddNote').off('click');
+								$('.tbProjects').find('.btnAddNote').on('click', function(){
+										var $tr = $(this).closest('tr');
+										var idTr = $tr.data('id');
+										window.location.href='http://localhost:8080/web-test/addNoteInProject.jsp?'+idTr+'';
+								});
+								
+								$('.tbProjects').find('.btnAddUser').off('click');
+								$('.tbProjects').find('.btnAddUser').on('click', function(){
+										var $tr = $(this).closest('tr');
+										var idTr = $tr.data('id');
+										window.location.href='http://localhost:8080/web-test/users.jsp?'+idTr+'';
+								});
+								
+								
+								$('.tbProjects').find('.btnDelete').off('click');
+								$('.tbProjects').find('.btnDelete').on('click', function(){
+									console.log("delete projeto");
+									var $trRemove = $(this).closest('tr');
+									var idRemove = $trRemove.data('id');
+									console.log("ID: "+ idRemove);
+									
+									$.ajax({
+									    url: 'project/deleteProject/'+idRemove,
+									    type: 'DELETE',
+									    success: function(result) {
+									    	console.log(result);
+									    }
+									}).done(function() {
+										location.reload();
+									}).fail(function(par1, par2, par3) {
+									}).always(function() {
+									});
+									
+								});
+								
+								
+							}
+						});
+					
+				});
+			}
+		});
+	
+	
+});
 </script>
 </head>
 <body>

@@ -119,12 +119,4 @@ public class Project implements Serializable {
 		this.version = version;
 	}
 
-//	public List<Permission> getPermission() {
-//		return permission;
-//	}
-//
-//	public void setPermission(List<Permission> permission) {
-//		this.permission = permission;
-//	}
-	
 }

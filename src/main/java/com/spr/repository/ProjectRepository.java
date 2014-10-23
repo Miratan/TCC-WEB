@@ -11,9 +11,13 @@ import com.spr.model.Project;
 public interface ProjectRepository extends JpaRepository<Project, Integer> {
 
 	public final static String FIND_BY_USERID_QUERY = "SELECT p FROM Project p LEFT JOIN FETCH p.user a WHERE a.userId = :id";
+	public final static String FIND_COLLABORATIVE_PROJECT = "SELECT p FROM Project p LEFT JOIN FETCH p.permission pe WHERE pe.user.userId = :id";
 
 	@Query(FIND_BY_USERID_QUERY)
 	public List<Project> findByUserId(@Param("id") Integer userId);
+	
+	@Query(FIND_COLLABORATIVE_PROJECT)
+	public List<Project> collaborativeProject(@Param("id") Integer userId);
 	
 //	public final static String FIND_PROJECT_BY_USERID_QUERY = "SELECT p FROM Project p LEFT JOIN FETCH p.user a LEFT JOIN FETCH p.permission pe WHERE p.projectId = :id AND pe.user.userId = :idUser ";
 //
