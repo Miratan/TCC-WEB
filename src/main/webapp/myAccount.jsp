@@ -14,6 +14,8 @@
 <title>Web - TCC</title>
 <script type="text/javascript">
 $(document).ready(function() {
+	
+	window.history.pushState(null, null, 'http://localhost:8080/web-test/indexUser.jsp');
 
 	$.ajax({
 		url : "user/user",
@@ -28,12 +30,38 @@ $(document).ready(function() {
 			$('#course').val(response.course);
 			$('#semester').val(response.semester);
 			$('#college').val(response.college);
+			$('#country').val(response.country);
 		}
+	
 	});
 	
-	$(document).ready(function(){
-		window.history.pushState(null, null, 'http://localhost:8080/web-test/myAccount.jsp');
+	
+	$('.textCenterAcess').find('.btn-success').off('click');
+	$('.textCenterAcess').find('.btn-success').on('click', function(){
+	
+		console.log('send form');
+		var data = $('form').serializeArray();
+		$.ajax({
+			url : "user/edit",
+			type : "POST",
+			data: data,
+			success : function(response) {
+				console.log(response);
+			},
+			error : function(data){
+				console.log(data);
+			}
+		});
+		
 	});
+	
+	
+	
+	
+	
+// 	$(document).ready(function(){
+// 		window.history.pushState(null, null, 'http://localhost:8080/web-test/myAccount.jsp');
+// 	});
  
 });
 
@@ -57,7 +85,7 @@ $(document).ready(function() {
     
     	<div class="textCenterAcess" style="text-align: center;">
 			<div class="col-md-12">
-				<form:form  method="POST" action="/login/edit/${user.getId()}">
+				<form:form>
 					<div class="form-inline">
 						<div class="col-md-4 col-md-offset-2">
 							<div class="row">
@@ -133,7 +161,7 @@ $(document).ready(function() {
 					<div class="form-group">
 						<div class="col-md-12" style="margin-bottom: 100px;">
 							<div>
-								<button type="submit" class="btn btn-success" value="send">Atualizar</button>
+								<button type="submit" class="btn btn-success">Atualizar</button>
 							</div>
 						</div>
 					</div>

@@ -67,9 +67,7 @@ public class UserServiceImpl implements UserService {
 		updatedUser.setName(user.getName());
 		updatedUser.setSemester(user.getSemester());
 		
-		userRepository.saveAndFlush(user);
-			
-		return updatedUser;
+		return userRepository.saveAndFlush(updatedUser);
 	}
 
 	@Override

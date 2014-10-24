@@ -47,19 +47,19 @@ public class UserController {
 	}
 	
 	
-	@RequestMapping(value="/edit/{userId}",  method = RequestMethod.POST)  
-	public ModelAndView editUserLoggedNewInputs(@ModelAttribute User user, @PathVariable int userId) throws Exception {
+	@RequestMapping(value="/edit",  method = RequestMethod.POST)  
+	public ModelAndView editUserLoggedNewInputs(@ModelAttribute User user) throws Exception {
 		
-		if(user.getPassword() == "****"){
-			User userOld = userService.findById(userId);
+		if(user.getPassword().equals("*****")){
+			User userOld = userService.findById(userSession.getUserLogado().getUserId());
 			user.setPassword(userOld.getPassword());
 		}
 		
-		user.setUserId(userId);
+		user.setUserId(userSession.getUserLogado().getUserId());
 		try {
 			userService.update(user);
-			userSession.logout();
-			userSession.logarUser(user);
+//			userSession.logout();
+//			userSession.logarUser(user);
 		} catch (UserNotFound e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
