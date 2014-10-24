@@ -63,6 +63,11 @@ public class PermissionServiceImpl implements PermissionService {
 		return projectWithPermission;
 	}
 
+	@Override
+	public List<Permission> findUsersInProject(int id) {
+		return permissionRepository.findUsersInProject(id);
+	}
+
 //	@Override
 //	public Permission delete(int id) {
 //	}

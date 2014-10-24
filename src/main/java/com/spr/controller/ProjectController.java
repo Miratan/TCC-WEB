@@ -1,6 +1,7 @@
 package com.spr.controller;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import com.spr.model.Note;
 import com.spr.model.Permission;
 import com.spr.model.Project;
 import com.spr.model.User;
+import com.spr.modelGeneric.ProjectView;
 import com.spr.modelGeneric.ProjectWithPermission;
 import com.spr.repository.ProjectRepository;
 import com.spr.service.NoteService;
@@ -161,6 +163,12 @@ public class ProjectController {
 	public @ResponseBody List<ProjectWithPermission> getCollaborativeProjects(){
 		List<Project> p = projectService.collaborativeProjects(userSession.getUserLogado().getUserId());
 		return permissionService.permissionInProject(p);
+	}
+	
+	@RequestMapping(value = "/viewProjectInfo/{id}", method = RequestMethod.GET)
+	public @ResponseBody List<ProjectView> getProjectInfo(@PathVariable Integer id){
+		Project p = projectService.findById(id);
+		return projectService.infoProject(p);
 	}
 	
 }

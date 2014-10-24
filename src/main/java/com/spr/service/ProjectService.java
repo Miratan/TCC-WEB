@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.spr.exception.ProjectNotFound;
 import com.spr.model.Project;
+import com.spr.modelGeneric.ProjectView;
 
 public interface ProjectService {
 	
@@ -14,5 +15,6 @@ public interface ProjectService {
 	public Project findById(int id);
 	public List<Project> findAllByUserId(Integer userId);
 	public List<Project> collaborativeProjects(Integer userId);
+	public List<ProjectView> infoProject(Project project);
 	
 }

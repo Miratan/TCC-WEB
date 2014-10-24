@@ -1,5 +1,6 @@
 package com.spr.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -9,14 +10,25 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.spr.exception.ProjectNotFound;
+import com.spr.model.Note;
+import com.spr.model.Permission;
 import com.spr.model.Project;
+import com.spr.modelGeneric.ProjectView;
 import com.spr.repository.ProjectRepository;
+import com.spr.service.NoteService;
+import com.spr.service.PermissionService;
 import com.spr.service.ProjectService;
 import com.spr.service.UserService;
 import com.spr.session.UserSession;
 
 @Service
 public class ProjectServiceImpl implements ProjectService {
+	
+	@Autowired
+	private NoteService noteService;
+	
+	@Autowired
+	private PermissionService permissionService;
 	
 	@Resource
 	private ProjectRepository projectRepository;
@@ -84,6 +96,27 @@ public class ProjectServiceImpl implements ProjectService {
 	@Override
 	public List<Project> collaborativeProjects(Integer userId) {
 		return projectRepository.collaborativeProject(userId);
+	}
+
+	@Override
+	public List<ProjectView> infoProject(Project project) {
+		ProjectView pv = new ProjectView();
+		List<ProjectView> pview = new ArrayList<ProjectView>();
+		List<Note> note = noteService.findByProjectId(project.getProjectId());
+		pv.setDeliveryDate(project.getDeliveryDate());
+		pv.setDescription(project.getDescription());
+		pv.setProjectId(project.getProjectId());
+		pv.setTitle(project.getTitle());
+		pv.setNote(note);
+		
+		List<Permission> permi = permissionService.findUsersInProject(project.getProjectId());
+//		List<User> user = new ArrayList<User>();
+//		for(Permission list : permi){
+//			user.add(list.getUser());
+//		}
+//		pview.setUser(user);
+		pview.add(pv);
+		return pview;
 	}
 
 }

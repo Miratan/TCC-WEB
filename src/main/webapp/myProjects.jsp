@@ -30,8 +30,8 @@ $(document).ready(function() {
 				var dataFinal = res[2]+'/'+res[1]+'/'+res[0];
 				
 				tr 	+= '<tr data-id="'+value.projectId+'">'
-					+ '		<td style="width: 25%;word-break: break-word;word-wrap: break-word;" class="name">'+value.title+'</td>'
-					+ '		<td style="width: 40%;word-break: break-word;word-wrap: break-word;" class="desc">'+value.description+'</td>'
+					+ '		<td style="width: 25%;word-break: break-word;word-wrap: break-word;cursor: pointer;" class="name">'+value.title+'</td>'
+					+ '		<td style="width: 40%;word-break: break-word;word-wrap: break-word;cursor: pointer;" class="desc">'+value.description+'</td>'
 					+ '		<td class="date">'+dataFinal+'</td>'
 					+ ' 	<td><span class="glyphicon glyphicon-comment btnAddNote" style="color: coral;cursor:pointer;"></span></td>'
 					+ ' 	<td><span class="glyphicon glyphicon-user btnAddUser" style="color: darkgreen;cursor:pointer;"></span></td>'
@@ -86,6 +86,15 @@ $(document).ready(function() {
 					
 				});
 				
+				$('.tbProjects').find('.name').off('click');
+				$('.tbProjects').find('.name').on('click', function(){
+						var $tr = $(this).closest('tr');
+						var idTr = $tr.data('id');
+						var view = $tr.find('.btnAddNote').data('view');
+						var edit = $tr.find('.btnAddNote').data('edit');
+						window.location.href='http://localhost:8080/web-test/viewProject.jsp?'+idTr+'/'+view+'/'+edit;
+				});
+				
 			}
 		});
 	
@@ -105,8 +114,8 @@ $(document).ready(function() {
 					var dataFinal = res[2]+'/'+res[1]+'/'+res[0];
 					
 					tr 	+= '<tr data-id="'+value.projectId+'">'
-						+ '		<td style="width: 25%;word-break: break-word;word-wrap: break-word;" class="name">'+value.title+'</td>'
-						+ '		<td style="width: 40%;word-break: break-word;word-wrap: break-word;" class="desc">'+value.description+'</td>'
+						+ '		<td style="width: 25%;word-break: break-word;word-wrap: break-word;cursor: pointer;" class="name">'+value.title+'</td>'
+						+ '		<td style="width: 40%;word-break: break-word;word-wrap: break-word;cursor: pointer;" class="desc">'+value.description+'</td>'
 						+ '		<td class="date">'+dataFinal+'</td>';
 						
 					tr 	+=  ' 	<td><span class="glyphicon glyphicon-comment btnAddNote" data-edit="'+value.edit+'" data-view="'+value.view+'" style="color: coral;cursor:pointer;"></span></td>'
@@ -126,6 +135,16 @@ $(document).ready(function() {
 						var edit = $tr.find('.btnAddNote').data('edit');
 						window.location.href='http://localhost:8080/web-test/addNoteInProject.jsp?'+idTr+'/'+view+'/'+edit;
 				});
+				
+				$('.tbProjects').find('.name').off('click');
+				$('.tbProjects').find('.name').on('click', function(){
+						var $tr = $(this).closest('tr');
+						var idTr = $tr.data('id');
+						var view = $tr.find('.btnAddNote').data('view');
+						var edit = $tr.find('.btnAddNote').data('edit');
+						window.location.href='http://localhost:8080/web-test/viewProject.jsp?'+idTr+'/'+view+'/'+edit;
+				});
+				
 			}
 		});
 	
