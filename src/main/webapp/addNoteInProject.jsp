@@ -18,7 +18,22 @@ $(document).ready(function() {
 	
 	var url   = window.location.search.replace("?", "");
 	window.history.pushState(null, null, 'http://localhost:8080/web-test/indexUser.jsp');
-	var id = url.split("&");
+	var element = url.split("/");
+	var id = element[0];
+	var view = element[1];
+	var edit = element[2];
+	
+	if(edit == "false"){
+		$('.noPermission').addClass('hidden');
+		$('.btnSaveNote').addClass('hidden');
+		$('.btnClean').addClass('hidden');
+	}
+	if(view == "false"){
+		$('.table').addClass('hidden');
+	}
+	if(view == "false" && edit == "false"){
+		$('.panel-default').append('<div class="col-md-12" style="height: 60px;margin-top: 30px;font-size:18px; text-align:center;">Suas permissões foram desativadas (visualização e/ou edição) neste projeto. Entre em contato com o responsável!</div>');
+	}
 	
 	$('.container').data('projectid', id);
 	$('#description').focus();
@@ -116,7 +131,7 @@ $(document).ready(function() {
 		</div>
 		
 		<div class="row">
-			<div class="col-md-12">
+			<div class="col-md-12 noPermission">
 				<span style="color: darkblue;font-style: italic;" id="coment">Comentários</span>
 				<textarea rows="5" cols="200" maxlength="255" class="form-control" id="description" name="description" style="width: 100%;margin-bottom: 15px;max-width: 100%;" placeholder="Descrição"></textarea>
 			</div>

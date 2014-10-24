@@ -19,6 +19,7 @@ import com.spr.model.Note;
 import com.spr.model.Permission;
 import com.spr.model.Project;
 import com.spr.model.User;
+import com.spr.modelGeneric.ProjectWithPermission;
 import com.spr.repository.ProjectRepository;
 import com.spr.service.NoteService;
 import com.spr.service.PermissionService;
@@ -157,8 +158,9 @@ public class ProjectController {
 	}
 	
 	@RequestMapping(value = "/collaborativeProjects", method = RequestMethod.GET)
-	public @ResponseBody List<Project> getCollaborativeProjects(){
-		return projectService.collaborativeProjects(userSession.getUserLogado().getUserId());
+	public @ResponseBody List<ProjectWithPermission> getCollaborativeProjects(){
+		List<Project> p = projectService.collaborativeProjects(userSession.getUserLogado().getUserId());
+		return permissionService.permissionInProject(p);
 	}
 	
 }

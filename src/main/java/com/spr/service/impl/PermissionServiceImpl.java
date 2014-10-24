@@ -1,10 +1,15 @@
 package com.spr.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
 import com.spr.model.Permission;
+import com.spr.model.Project;
+import com.spr.modelGeneric.ProjectWithPermission;
 import com.spr.repository.PermissionRepository;
 import com.spr.service.PermissionService;
 
@@ -13,6 +18,8 @@ public class PermissionServiceImpl implements PermissionService {
 	
 	@Resource
 	private PermissionRepository permissionRepository;
+	
+	List<ProjectWithPermission> projectWithPermission;
 	
 	@Override
 	public Permission create(Permission permission) {
@@ -33,6 +40,27 @@ public class PermissionServiceImpl implements PermissionService {
 	@Override
 	public Permission findById(int id) {
 		return permissionRepository.findOne(id);
+	}
+
+	@Override
+	public List<ProjectWithPermission> permissionInProject(List<Project> p) {
+		
+		projectWithPermission = new ArrayList<ProjectWithPermission>();
+		
+		for(Project list: p){
+			Permission pe = permissionRepository.findProjectPermission(list.getProjectId());
+			
+			ProjectWithPermission pp = new ProjectWithPermission();
+			pp.setDeliveryDate(list.getDeliveryDate());
+			pp.setDescription(list.getDescription());
+			pp.setEdit(pe.getEdit());
+			pp.setProjectId(list.getProjectId());
+			pp.setTitle(list.getTitle());
+			pp.setView(pe.getView());
+			
+			projectWithPermission.add(pp);
+		}
+		return projectWithPermission;
 	}
 
 //	@Override

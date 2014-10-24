@@ -97,10 +97,8 @@ $(document).ready(function() {
 		success : function(response) {
 				console.log(response);
 				var tr = "";
+				console.log(response);
 				$.each(response, function(index, value) {
-					
-					var projectId = value.projectId;
-					var userId = -10;
 					
 					var data = value.deliveryDate;
 					var res = data.split("-");
@@ -111,37 +109,22 @@ $(document).ready(function() {
 						+ '		<td style="width: 40%;word-break: break-word;word-wrap: break-word;" class="desc">'+value.description+'</td>'
 						+ '		<td class="date">'+dataFinal+'</td>';
 						
-					var tds;
-					$.ajax({
-						url : "project/permission/"+projectId+"/"+userId,
-						type : "GET",
-						success : function(response) {
-								console.log(response);
-								if(response.edit == true){
-									tr	+= ' 	<td data-editpermission="'+response.edit+'"><span class="glyphicon glyphicon-comment btnAddNote" style="color: coral;cursor:pointer;"></span></td>';
-								}else
-									if(response.view == true){
-										tr	+= ' 	<td data-viewpermission="'+response.view+'"><span class="glyphicon glyphicon-comment btnAddNote" style="color: coral;cursor:pointer;"></span></td>';
-										
-									}else{
-										tr	+= ' 	<td></td>';
-									}
-								tr += ' 	<td></td>'
-									+ ' 	<td></td>'
-									+ ' 	<td></td>';
-								tr	+= '</tr>';
-								$('.tbProjects').append(tr);
-								
-								$('.tbProjects').find('.btnAddNote').off('click');
-								$('.tbProjects').find('.btnAddNote').on('click', function(){
-										var $tr = $(this).closest('tr');
-										var idTr = $tr.data('id');
-										window.location.href='http://localhost:8080/web-test/addNoteInProject.jsp?'+idTr+'';
-								});
-								
-							}
-						});
-					
+					tr 	+=  ' 	<td><span class="glyphicon glyphicon-comment btnAddNote" data-edit="'+value.edit+'" data-view="'+value.view+'" style="color: coral;cursor:pointer;"></span></td>'
+						+ ' 	<td></td>'
+						+ '		<td></td>'
+						+ ' 	<td></td>'
+						+ '</tr>'
+				});
+				
+				$('.tbProjects').append(tr);
+				
+				$('.tbProjects').find('.btnAddNote').off('click');
+				$('.tbProjects').find('.btnAddNote').on('click', function(){
+						var $tr = $(this).closest('tr');
+						var idTr = $tr.data('id');
+						var view = $tr.find('.btnAddNote').data('view');
+						var edit = $tr.find('.btnAddNote').data('edit');
+						window.location.href='http://localhost:8080/web-test/addNoteInProject.jsp?'+idTr+'/'+view+'/'+edit;
 				});
 			}
 		});
