@@ -14,9 +14,7 @@
 <title>Web - TCC</title>
 <script type="text/javascript">
 $(document).ready(function() {
-	
-	window.history.pushState(null, null, 'http://localhost:8080/web-test/indexUser.jsp');
-
+// 	window.history.pushState(null, null, 'http://localhost:8080/web-test/indexUser.jsp');
 	$.ajax({
 		url : "user/user",
 		type : "GET",
@@ -39,14 +37,40 @@ $(document).ready(function() {
 	$('.textCenterAcess').find('.btn-success').off('click');
 	$('.textCenterAcess').find('.btn-success').on('click', function(){
 	
-		console.log('send form');
-		var data = $('form').serializeArray();
+		var username = $('.textCenterAcess').find('#username').val();
+		var password = $('.textCenterAcess').find('#password').val();
+		var name = $('.textCenterAcess').find('#name').val();
+		var email = $('.textCenterAcess').find('#email').val();
+		var birthday = $('.textCenterAcess').find('#birthday').val();
+		var city = $('.textCenterAcess').find('#city').val();
+		var course = $('.textCenterAcess').find('#course').val();
+		var semester = $('.textCenterAcess').find('#semester').val();
+		var college = $('.textCenterAcess').find('#college').val();
+		var country = $('.textCenterAcess').find('#country').val();
 		$.ajax({
 			url : "user/edit",
 			type : "POST",
-			data: data,
+			data: {"username":username,
+				  "password":password,
+				  "name":name,
+				  "email":email,
+				  "birthday":birthday,
+				  "city":city,
+				  "course":course,
+				  "semester":semester,
+				  "college":college,
+				  "country":country},
 			success : function(response) {
 				console.log(response);
+				$('#username').val(response.username);
+				$('#name').val(response.name);
+				$('#email').val(response.email);
+				$('#birthday').val(response.birthday);
+				$('#city').val(response.city);
+				$('#course').val(response.course);
+				$('#semester').val(response.semester);
+				$('#college').val(response.college);
+				$('#country').val(response.country);
 			},
 			error : function(data){
 				console.log(data);
@@ -55,16 +79,7 @@ $(document).ready(function() {
 		
 	});
 	
-	
-	
-	
-	
-// 	$(document).ready(function(){
-// 		window.history.pushState(null, null, 'http://localhost:8080/web-test/myAccount.jsp');
-// 	});
- 
 });
-
 </script>
 </head>
 <body>
@@ -85,7 +100,7 @@ $(document).ready(function() {
     
     	<div class="textCenterAcess" style="text-align: center;">
 			<div class="col-md-12">
-				<form:form>
+<%-- 				<form:form> --%>
 					<div class="form-inline">
 						<div class="col-md-4 col-md-offset-2">
 							<div class="row">
@@ -165,7 +180,7 @@ $(document).ready(function() {
 							</div>
 						</div>
 					</div>
-				</form:form>
+<%-- 				</form:form> --%>
 			</div>
 		</div>
     </div>

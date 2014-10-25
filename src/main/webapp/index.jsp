@@ -63,7 +63,7 @@
 			</div>
 			<div class="col-md-6" style="margin-top: 40px;">
 				<div class="row">
-					<form:form method="post" action="/authentication">
+					<form:form method="post" action="http://localhost:8080/web-test/authentication">
 						<div class="col-md-4 input-group" style="margin: auto; margin-bottom: 15px;">
 							<input style="border-radius: 5px; width: 100%;!important"
 								name="username" type="text" class="form-control"

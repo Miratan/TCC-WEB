@@ -1,7 +1,6 @@
 package com.spr.controller;
 
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,7 +83,6 @@ public class ProjectController {
 		try {
 			projectService.update(project);
 		} catch (ProjectNotFound e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

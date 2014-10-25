@@ -1,5 +1,6 @@
 package com.spr.controller;
 
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -48,7 +50,29 @@ public class UserController {
 	
 	
 	@RequestMapping(value="/edit",  method = RequestMethod.POST)  
-	public ModelAndView editUserLoggedNewInputs(@ModelAttribute User user) throws Exception {
+	public @ResponseBody User editUserLoggedNewInputs(
+			@RequestParam(value="username", required=false) String username,
+			@RequestParam(value="password", required=false) String password,
+			@RequestParam(value="name", required=false) String name,
+			@RequestParam(value="email", required=false) String email,
+			@RequestParam(value="birthday", required=false) Date birthday,
+			@RequestParam(value="city", required=false) String city,
+			@RequestParam(value="course", required=false) String course,
+			@RequestParam(value="semester", required=false) String semester,
+			@RequestParam(value="college", required=false) String college,
+			@RequestParam(value="country", required=false) String country) {
+		
+		User user = new User();
+		user.setBirthday(birthday);
+		user.setCity(city);
+		user.setCollege(college);
+		user.setCountry(country);
+		user.setCourse(course);
+		user.setEmail(email);
+		user.setName(name);
+		user.setPassword(password);
+		user.setSemester(semester);
+		user.setUsername(username);
 		
 		if(user.getPassword().equals("*****")){
 			User userOld = userService.findById(userSession.getUserLogado().getUserId());
@@ -58,17 +82,11 @@ public class UserController {
 		user.setUserId(userSession.getUserLogado().getUserId());
 		try {
 			userService.update(user);
-//			userSession.logout();
-//			userSession.logarUser(user);
 		} catch (UserNotFound e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		User userView = userService.findById(user.getUserId());
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("user", userView);
-		mav.setViewName("myAccount");
-		return mav;
+		return userView;
 	}
 	
 	@RequestMapping(value = "/user", method = RequestMethod.GET)
