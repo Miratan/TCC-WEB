@@ -19,7 +19,7 @@ public interface PermissionRepository extends JpaRepository<Permission, Integer>
 	public Permission findPermission(@Param("id") Integer id, @Param("idUser") Integer userId);
 	
 	@Query(FIND_PROJECT_PERMISSION)
-	public Permission findProjectPermission(@Param("id") Integer id);
+	public List<Permission> findProjectPermission(@Param("id") Integer id);
 	
 	@Query(FIND_USERS_IN_PROJECT_WITH_PERMISSION)
 	public List<Permission> findUsersInProject(@Param("id") Integer id);	

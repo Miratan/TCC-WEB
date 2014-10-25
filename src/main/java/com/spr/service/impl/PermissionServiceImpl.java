@@ -47,19 +47,32 @@ public class PermissionServiceImpl implements PermissionService {
 		
 		projectWithPermission = new ArrayList<ProjectWithPermission>();
 		
-		for(Project list: p){
-			Permission pe = permissionRepository.findProjectPermission(list.getProjectId());
+		for(int i = 0; i < p.size(); i++){
+			List<Permission> pe = permissionRepository.findProjectPermission(p.get(i).getProjectId());
 			
 			ProjectWithPermission pp = new ProjectWithPermission();
-			pp.setDeliveryDate(list.getDeliveryDate());
-			pp.setDescription(list.getDescription());
-			pp.setEdit(pe.getEdit());
-			pp.setProjectId(list.getProjectId());
-			pp.setTitle(list.getTitle());
-			pp.setView(pe.getView());
+			pp.setDeliveryDate(p.get(i).getDeliveryDate());
+			pp.setDescription(p.get(i).getDescription());
+			pp.setEdit(pe.get(i).getEdit());
+			pp.setProjectId(p.get(i).getProjectId());
+			pp.setTitle(p.get(i).getTitle());
+			pp.setView(pe.get(i).getView());
 			
 			projectWithPermission.add(pp);
 		}
+		
+//		for(Project list: p){
+//			List<Permission> pe = (List<Permission>) permissionRepository.findProjectPermission(list.getProjectId());
+//			
+//			ProjectWithPermission pp = new ProjectWithPermission();
+//			pp.setDeliveryDate(list.getDeliveryDate());
+//			pp.setDescription(list.getDescription());
+//			pp.setEdit(pe.getEdit());
+//			pp.setProjectId(list.getProjectId());
+//			pp.setTitle(list.getTitle());
+//			pp.setView(pe.getView());
+//			
+//		}
 		return projectWithPermission;
 	}
 

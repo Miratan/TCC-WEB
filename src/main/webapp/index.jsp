@@ -22,7 +22,7 @@
 	
 	
 	$(document).ready(function(){
-		window.history.pushState(null, null, 'http://localhost:8080/web-test/index.jsp');
+		window.history.pushState(null, null, 'http://localhost:8080/web-test/');
 	});
  
 </script>
@@ -34,7 +34,7 @@
     	<jsp:include page="menu.jsp"/>
 	</div>
 
-	<div class="container">
+	<div class="container" style="margin-top: 45px;">
 		<div class="starter-template">
 			<div class="col-md-6">
 				<div class="row">
@@ -63,10 +63,10 @@
 			</div>
 			<div class="col-md-6" style="margin-top: 40px;">
 				<div class="row">
-					<form:form method="post" action="/login">
+					<form:form method="post" action="/authentication">
 						<div class="col-md-4 input-group" style="margin: auto; margin-bottom: 15px;">
 							<input style="border-radius: 5px; width: 100%;!important"
-								name="name" type="text" class="form-control"
+								name="username" type="text" class="form-control"
 								placeholder="Usuário">
 						</div>
 						<div class="col-md-4 input-group"

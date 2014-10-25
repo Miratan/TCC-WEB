@@ -47,16 +47,17 @@ $(document).ready(function() {
 				var dataFinal = res[2]+'/'+res[1]+'/'+res[0];
 				
 				trInfoProject += '	<tr>'
-							  +	 '	<td style="width: 75%">"'+value.title.toString()+'"</td>'
-							  +	 '	<td>"'+dataFinal+'"</td>'
+							  +	 '	<td style="width: 30%">'+value.title+'</td>'
+							  +	 '	<td style="width: 50%">'+value.description+'</td>'
+							  +	 '	<td>'+dataFinal+'</td>'
 							  +	 '	</tr>';
 							  
 				$.each(value.note, function(index, val){
 					
 					trNoteProject += '	<tr>'
-								  +	 '		<td style="width: 50%">"'+val.description+'"</td>'
-								  +	 '		<td style="width: 25%">"'+val.userCreator+'"</td>'
-								  +	 '		<td style="width: 25%">"'+val.dateCreated+'"</td>'
+								  +	 '		<td style="width: 50%">'+val.description+'</td>'
+								  +	 '		<td style="width: 25%">'+val.userCreator+'</td>'
+								  +	 '		<td style="width: 25%">'+val.dateCreated+'</td>'
 								  +	 '	</tr>';
 					
 				});
@@ -93,7 +94,8 @@ $(document).ready(function() {
 				<table class="table">
 					<thead>
 						<tr>
-							<th style="text-transform: uppercase; width: 75%">Descrição</th>
+							<th style="text-transform: uppercase; width: 30%">Título</th>
+							<th style="text-transform: uppercase; width: 50%">Descrição</th>
 							<th style="text-transform: uppercase;">Data da Entrega</th>
 						</tr>
 					</thead>

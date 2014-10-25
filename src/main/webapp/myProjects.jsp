@@ -115,7 +115,7 @@ $(document).ready(function() {
 					
 					tr 	+= '<tr data-id="'+value.projectId+'">'
 						+ '		<td style="width: 25%;word-break: break-word;word-wrap: break-word;cursor: pointer;" class="name">'+value.title+'</td>'
-						+ '		<td style="width: 40%;word-break: break-word;word-wrap: break-word;cursor: pointer;" class="desc">'+value.description+'</td>'
+						+ '		<td style="width: 40%;word-break: break-word;word-wrap: break-word;" class="desc">'+value.description+'</td>'
 						+ '		<td class="date">'+dataFinal+'</td>';
 						
 					tr 	+=  ' 	<td><span class="glyphicon glyphicon-comment btnAddNote" data-edit="'+value.edit+'" data-view="'+value.view+'" style="color: coral;cursor:pointer;"></span></td>'
@@ -171,7 +171,7 @@ $(document).ready(function() {
 <!-- 			<div class="panel-heading"> -->
 <!-- 			</div> -->
 
-		<table class="table">
+		<table class="table table-hover">
 	        <thead>
 	          <tr>
 	            <th style="text-transform: uppercase;">Título</th>
