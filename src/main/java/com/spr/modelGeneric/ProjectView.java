@@ -2,8 +2,8 @@ package com.spr.modelGeneric;
 
 import java.sql.Date;
 import java.util.List;
+
 import com.spr.model.Note;
-import com.spr.model.User;
 
 public class ProjectView {
 
@@ -11,7 +11,7 @@ public class ProjectView {
 	private String title;
 	private String description;
 	private Date deliveryDate;
-	private List<User> user;
+	private List<String> user;
 	private List<Note> note;
 //	private List<File> file;
 
@@ -47,11 +47,11 @@ public class ProjectView {
 		this.deliveryDate = deliveryDate;
 	}
 
-	public List<User> getUser() {
+	public List<String> getUser() {
 		return user;
 	}
 
-	public void setUser(List<User> user) {
+	public void setUser(List<String> user) {
 		this.user = user;
 	}
 

@@ -41,6 +41,7 @@ $(document).ready(function() {
 				console.log(response);
 				var trInfoProject = "";
 				var trNoteProject = "";
+				var trUsersProject = "";
 				$.each(response, function(index, value) {
 				var data = value.deliveryDate;
 				var res = data.split("-");
@@ -61,9 +62,18 @@ $(document).ready(function() {
 								  +	 '	</tr>';
 					
 				});
+				
+				$.each(value.user, function(index, val){
+					
+					trUsersProject+= '	<tr>'
+								  +	 '		<td style="text-transform: uppercase;">'+val+'</td>'
+								  +	 '	</tr>';
+					
+				});
 							  
 							  
 				});
+			$('.tbColaboradores').append(trUsersProject);
 			$('.tbProjects').append(trInfoProject);
 			$('.tbNotes').append(trNoteProject);
 		}
@@ -108,22 +118,22 @@ $(document).ready(function() {
 				</table>
 			</div>
 			<div class="panel panel-default col-md-2" style="margin-left: 10px;">
-				<table class="table">
+				<table class="table table-hover">
 					<thead>
 						<tr>
 							<th style="text-transform: uppercase;">Colaboradores</th>
 						</tr>
 					</thead>
 					<tbody class="tbColaboradores">
-						<tr>
-							<td>Carlos Alberto</td>
-						</tr>
-						<tr>
-							<td>Gustavo Borges</td>
-						</tr>
-						<tr>
-							<td>John John Florence</td>
-						</tr>
+<!-- 						<tr> -->
+<!-- 							<td>Carlos Alberto</td> -->
+<!-- 						</tr> -->
+<!-- 						<tr> -->
+<!-- 							<td>Gustavo Borges</td> -->
+<!-- 						</tr> -->
+<!-- 						<tr> -->
+<!-- 							<td>John John Florence</td> -->
+<!-- 						</tr> -->
 					</tbody>
 				</table>
 			</div>
@@ -132,7 +142,7 @@ $(document).ready(function() {
 
 		<div class="row" style="margin-top: 20px;">
 			<div class="panel panel-default col-md-7">
-				<table class="table">
+				<table class="table table-hover">
 					<thead>
 						<tr>
 							<th style="text-transform: uppercase; width: 50%">Comentários</th>
@@ -160,14 +170,14 @@ $(document).ready(function() {
 				</table>
 			</div>
 			<div class="panel panel-default col-md-4" style="margin-left: 10px;">
-				<table class="table">
+				<table class="table table-hover">
 					<thead>
 						<tr>
 							<th style="text-transform: uppercase; width: 80%">Arquivos</th>
 							<th style="text-transform: uppercase;">Data</th>
 						</tr>
 					</thead>
-					<tbody class="tbColaboradores">
+					<tbody class="tbFiles">
 						<tr>
 							<td>TCC_CARLOS_JOHN_CAP_5</td>
 							<td>18/10/2014</td>

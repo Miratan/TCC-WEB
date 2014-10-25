@@ -110,11 +110,13 @@ public class ProjectServiceImpl implements ProjectService {
 		pv.setNote(note);
 		
 		List<Permission> permi = permissionService.findUsersInProject(project.getProjectId());
-//		List<User> user = new ArrayList<User>();
-//		for(Permission list : permi){
-//			user.add(list.getUser());
-//		}
-//		pview.setUser(user);
+		List<String> user = new ArrayList<String>();
+		for(Permission list : permi){
+			if(!list.getUser().getUserId().equals(userSession.getUserLogado().getUserId())){
+				user.add(list.getUser().getName());
+			}
+		}
+		pv.setUser(user);
 		pview.add(pv);
 		return pview;
 	}
