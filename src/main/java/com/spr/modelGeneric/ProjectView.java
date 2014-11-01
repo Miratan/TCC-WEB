@@ -3,6 +3,7 @@ package com.spr.modelGeneric;
 import java.sql.Date;
 import java.util.List;
 
+import com.spr.model.File;
 import com.spr.model.Note;
 
 public class ProjectView {
@@ -13,7 +14,7 @@ public class ProjectView {
 	private Date deliveryDate;
 	private List<String> user;
 	private List<Note> note;
-//	private List<File> file;
+	private List<File> file;
 
 	public Integer getProjectId() {
 		return projectId;
@@ -63,4 +64,12 @@ public class ProjectView {
 		this.note = note;
 	}
 
+	public List<File> getFile() {
+		return file;
+	}
+
+	public void setFile(List<File> file) {
+		this.file = file;
+	}
+	
 }

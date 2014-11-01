@@ -3,7 +3,6 @@ package com.spr.init;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration.Dynamic;
-
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
@@ -16,13 +15,17 @@ public class Initializer implements WebApplicationInitializer {
 	public void onStartup(ServletContext servletContext) throws ServletException {
 		AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
 		ctx.register(WebAppConfig.class);
-		servletContext.addListener(new ContextLoaderListener(ctx));
-
 		ctx.setServletContext(servletContext);
+        ctx.refresh();
+        servletContext.addListener(new ContextLoaderListener(ctx));
 
 		Dynamic servlet = servletContext.addServlet(DISPATCHER_SERVLET_NAME, new DispatcherServlet(ctx));
 		servlet.addMapping("/");
 		servlet.setLoadOnStartup(1);
+//		servlet.setMultipartConfig(ctx.getBean(CommonsMultipartResolver.class));
+		
+		
+		
 	}
 
 }

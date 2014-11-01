@@ -42,6 +42,7 @@ $(document).ready(function() {
 				var trInfoProject = "";
 				var trNoteProject = "";
 				var trUsersProject = "";
+				var trFilesProject = "";
 				$.each(response, function(index, value) {
 				var data = value.deliveryDate;
 				var res = data.split("-");
@@ -70,12 +71,60 @@ $(document).ready(function() {
 								  +	 '	</tr>';
 					
 				});
+				
+				$.each(value.file, function(index, val){
+					
+					trFilesProject+= '	<tr data-projectid="'+val.projectId+'" data-filepath="'+val.filePath+'">'
+								  +	 '		<td>'+val.nameFile+'</td>'
+								  +	 '		<td>'+val.userCreator+'</td>'
+								  +	 '		<td>'+val.dateCreated+'</td>'
+								  +	 '		<td>'+val.description+'</td>'
+								  +  '		<td><span class="glyphicon glyphicon-download downloadFile"></span></td>'
+								  +	 '	</tr>';
+					
+				});
 							  
 							  
 				});
+			$('.tbFiles').append(trFilesProject);
 			$('.tbColaboradores').append(trUsersProject);
 			$('.tbProjects').append(trInfoProject);
 			$('.tbNotes').append(trNoteProject);
+			
+			
+			
+			
+			
+			$('.downloadFile').off('click');
+			$('.downloadFile').on('click', function(){
+				var $tr = $(this).closest('tr');
+				var projectId = $tr.data('projectid');
+				var file = $tr.data('filepath');
+				var character = file.split("\\");
+				var id = character[0];
+				var view = character[1];
+				var edit = character[2];
+				var filePath = character[3];
+				
+				var characterExtensao = filePath.split(".");
+				var filePathSend = characterExtensao[0];
+				var format = characterExtensao[1];
+				
+				window.location.href='http://localhost:8080/web-test/file/download/'+projectId+'/'+filePathSend+'/'+format;
+				
+// 				$.ajax({
+// 					url : "file/download/"+projectId+"/"+filePath,
+// 					type : "GET",
+// 					success : function(response) {
+// 						window.location.href='http://localhost:8080/web-test/viewProject.jsp?'+projectId+'/'+view+'/'+edit;
+// 					}
+// 				});
+				
+			});
+			
+			
+			
+			
 		}
 	});
 	
@@ -117,7 +166,7 @@ $(document).ready(function() {
 					</tbody>
 				</table>
 			</div>
-			<div class="panel panel-default col-md-2" style="margin-left: 10px;">
+			<div class="panel panel-default col-md-3">
 				<table class="table table-hover">
 					<thead>
 						<tr>
@@ -141,7 +190,38 @@ $(document).ready(function() {
 
 
 		<div class="row" style="margin-top: 20px;">
-			<div class="panel panel-default col-md-7">
+			<div class="panel panel-default col-md-12" style="margin-bottom: 70px;">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th style="text-transform: uppercase; width: 20%">Arquivo</th>
+							<th style="text-transform: uppercase; width: 20%">Usuário</th>
+							<th style="text-transform: uppercase; width: 15%">Data</th>
+							<th style="text-transform: uppercase; width: 40%">Comentário</th>
+							<th style="width: 5%"></th>
+						</tr>
+					</thead>
+					<tbody class="tbFiles">
+<!-- 						<tr> -->
+<!-- 							<td>TCC_CARLOS_JOHN_CAP_5</td> -->
+<!-- 							<td>18/10/2014</td> -->
+<!-- 						</tr> -->
+<!-- 						<tr> -->
+<!-- 							<td>AJUSTES_CAP_4</td> -->
+<!-- 							<td>10/10/2014</td> -->
+<!-- 						</tr> -->
+<!-- 						<tr> -->
+<!-- 							<td>TCC_CARLOS_JOHN_CAP_4</td> -->
+<!-- 							<td>21/09/2014</td> -->
+<!-- 						</tr> -->
+<!-- 						<tr> -->
+<!-- 							<td>AJUSTES_CAP_3</td> -->
+<!-- 							<td>05/09/2014</td> -->
+<!-- 						</tr> -->
+					</tbody>
+				</table>
+			</div>
+			<div class="panel panel-default col-md-12">
 				<table class="table table-hover">
 					<thead>
 						<tr>
@@ -166,34 +246,6 @@ $(document).ready(function() {
 <!-- 							<td style="width: 25%">Gustavo Borges</td> -->
 <!-- 							<td style="width: 25%">10/10/2014</td> -->
 <!-- 						</tr> -->
-					</tbody>
-				</table>
-			</div>
-			<div class="panel panel-default col-md-4" style="margin-left: 10px;">
-				<table class="table table-hover">
-					<thead>
-						<tr>
-							<th style="text-transform: uppercase; width: 80%">Arquivos</th>
-							<th style="text-transform: uppercase;">Data</th>
-						</tr>
-					</thead>
-					<tbody class="tbFiles">
-						<tr>
-							<td>TCC_CARLOS_JOHN_CAP_5</td>
-							<td>18/10/2014</td>
-						</tr>
-						<tr>
-							<td>AJUSTES_CAP_4</td>
-							<td>10/10/2014</td>
-						</tr>
-						<tr>
-							<td>TCC_CARLOS_JOHN_CAP_4</td>
-							<td>21/09/2014</td>
-						</tr>
-						<tr>
-							<td>AJUSTES_CAP_3</td>
-							<td>05/09/2014</td>
-						</tr>
 					</tbody>
 				</table>
 			</div>

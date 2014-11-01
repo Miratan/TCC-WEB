@@ -10,11 +10,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.spr.exception.ProjectNotFound;
+import com.spr.model.File;
 import com.spr.model.Note;
 import com.spr.model.Permission;
 import com.spr.model.Project;
 import com.spr.modelGeneric.ProjectView;
 import com.spr.repository.ProjectRepository;
+import com.spr.service.FileService;
 import com.spr.service.NoteService;
 import com.spr.service.PermissionService;
 import com.spr.service.ProjectService;
@@ -32,6 +34,9 @@ public class ProjectServiceImpl implements ProjectService {
 	
 	@Resource
 	private ProjectRepository projectRepository;
+	
+	@Resource
+	private FileService fileService;
 	
 	@Autowired
 	private UserSession userSession;
@@ -109,6 +114,7 @@ public class ProjectServiceImpl implements ProjectService {
 		pv.setTitle(project.getTitle());
 		pv.setNote(note);
 		
+		List<File> files = fileService.findByProjectId(project.getProjectId());
 		List<Permission> permi = permissionService.findUsersInProject(project.getProjectId());
 		List<String> user = new ArrayList<String>();
 		for(Permission list : permi){
@@ -116,6 +122,7 @@ public class ProjectServiceImpl implements ProjectService {
 				user.add(list.getUser().getName());
 			}
 		}
+		pv.setFile(files);
 		pv.setUser(user);
 		pview.add(pv);
 		return pview;
