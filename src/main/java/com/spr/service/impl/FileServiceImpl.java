@@ -27,6 +27,13 @@ public class FileServiceImpl implements FileService {
 	public List<File> findByProjectId(Integer projectId) {
 		return fileRepository.findByProjectId(projectId);
 	}
+
+
+	@Override
+	public File delete(int id) {
+		fileRepository.delete(id);
+		return null;
+	}
 	
 //	
 //	@Autowired

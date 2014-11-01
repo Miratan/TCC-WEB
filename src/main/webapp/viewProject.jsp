@@ -74,12 +74,13 @@ $(document).ready(function() {
 				
 				$.each(value.file, function(index, val){
 					
-					trFilesProject+= '	<tr data-projectid="'+val.projectId+'" data-filepath="'+val.filePath+'">'
+					trFilesProject+= '	<tr data-fileid="'+val.fileId+'" data-projectid="'+val.projectId+'" data-filepath="'+val.filePath+'">'
 								  +	 '		<td>'+val.nameFile+'</td>'
 								  +	 '		<td>'+val.userCreator+'</td>'
 								  +	 '		<td>'+val.dateCreated+'</td>'
 								  +	 '		<td>'+val.description+'</td>'
-								  +  '		<td><span class="glyphicon glyphicon-download downloadFile"></span></td>'
+								  +  '		<td style="color: forestgreen;"><span class="glyphicon glyphicon-download downloadFile"></span></td>'
+								  +  '		<td style="color: red;"><span class="glyphicon glyphicon-remove deleteFile"></span></td>'
 								  +	 '	</tr>';
 					
 				});
@@ -91,6 +92,18 @@ $(document).ready(function() {
 			$('.tbProjects').append(trInfoProject);
 			$('.tbNotes').append(trNoteProject);
 			
+			
+			
+			$('.deleteFile').off('click');
+			$('.deleteFile').on('click', function(){
+				var $tr = $(this).closest('tr');
+				console.log($tr.data('fileid'));
+				var fileIdToDelete = $tr.data('fileid');
+				var projectId = $tr.data('projectid');
+				
+				window.location.href='http://localhost:8080/web-test/file/deleteFile/'+fileIdToDelete;
+				
+			});
 			
 			
 			
@@ -196,8 +209,9 @@ $(document).ready(function() {
 						<tr>
 							<th style="text-transform: uppercase; width: 20%">Arquivo</th>
 							<th style="text-transform: uppercase; width: 20%">Usuário</th>
-							<th style="text-transform: uppercase; width: 15%">Data</th>
+							<th style="text-transform: uppercase; width: 10%">Data</th>
 							<th style="text-transform: uppercase; width: 40%">Comentário</th>
+							<th style="width: 5%"></th>
 							<th style="width: 5%"></th>
 						</tr>
 					</thead>

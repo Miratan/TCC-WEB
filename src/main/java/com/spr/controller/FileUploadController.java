@@ -139,6 +139,18 @@ public class FileUploadController {
 		return mav;
 	}
 	
+	@RequestMapping(value = "/deleteFile/{fileIdToDelete}", method = RequestMethod.GET)
+	public ModelAndView doDelete(@PathVariable Integer fileIdToDelete){
+		fileService.delete(fileIdToDelete);
+		
+		
+		ModelAndView mav = new ModelAndView("myProjects");
+		mav.setViewName("myProjects");
+		return mav;
+	}
+	
+	
+	
 	public String getCurrentDate(){
 		java.text.DateFormat dateFormat = new java.text.SimpleDateFormat("yyyy/MM/dd");
 		java.util.Date date = new java.util.Date();
