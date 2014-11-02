@@ -68,18 +68,18 @@
 				<form:form  method="post" action="/project/create">
 					<div class="form-inline">
 						<div class="col-md-4">
-							<input id="title" name="title" type="text" class="form-control" placeholder="Título">
+							<input id="title" maxlength="200" name="title" type="text" class="form-control" placeholder="Título">
 						</div>
 						<div class="col-md-4">
-							<input id="description" name="description" type="text" class="form-control" placeholder="Descrição">
+							<input id="description" maxlength="3000" name="description" type="text" class="form-control" placeholder="Descrição">
 						</div>
 						<div class="col-md-4">
-							<input id="keyWords" name="keyWords" type="text" class="form-control"	placeholder="Chaves">
+							<input id="keyWords" maxlength="60" name="keyWords" type="text" class="form-control"	placeholder="Chaves">
 						</div>
 					</div>
 					<div class="form-inline">
 						<div class="col-md-4" style="margin-top:20px;">
-							<input id="discipline" name="discipline" type="text" class="form-control" placeholder="Disciplina">
+							<input id="discipline" maxlength="30" name="discipline" type="text" class="form-control" placeholder="Disciplina">
 						</div>
 						<div class="col-md-4" style="margin-top:20px;">
 							<input id="deliveryDate" name="deliveryDate" type="date" class="form-control"	placeholder="Data da Entrega">

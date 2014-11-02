@@ -2,6 +2,7 @@ package com.spr.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -24,6 +25,7 @@ public class Note implements Serializable{
 	
 	private String dateCreated;
 	
+	@Column(length=3000)
 	private String description;
 	
 	@ManyToOne(fetch = FetchType.EAGER)

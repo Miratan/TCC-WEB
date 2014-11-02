@@ -2,6 +2,7 @@ package com.spr.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -21,8 +22,10 @@ public class File implements Serializable {
 	
 	private Integer projectId;
 	
+	@Column(length=3000)
 	private String description;
 	
+	@Column(length=300)
 	private String nameFile;
 	
 	private String userCreator;

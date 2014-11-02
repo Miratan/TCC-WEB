@@ -2,6 +2,7 @@ package com.spr.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -34,8 +35,14 @@ public class Question implements Serializable {
 	private Integer quinze;
 	private Integer dezeseis;
 	private Integer dezessete;
+	
+	@Column(length=100)
 	private String idade;
+	
+	@Column(length=100)
 	private String curso;
+	
+	@Column(length=3000)
 	private String description;
 	
 	public String getDescription() {

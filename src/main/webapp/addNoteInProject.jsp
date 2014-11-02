@@ -133,7 +133,7 @@ $(document).ready(function() {
 		<div class="row">
 			<div class="col-md-12 noPermission">
 				<span style="color: darkblue;font-style: italic;" id="coment">Comentários</span>
-				<textarea rows="5" cols="200" maxlength="255" class="form-control" id="description" name="description" style="width: 100%;margin-bottom: 15px;max-width: 100%;" placeholder="Descrição"></textarea>
+				<textarea rows="5" cols="200" maxlength="3000" class="form-control" id="description" name="description" style="width: 100%;margin-bottom: 15px;max-width: 100%;" placeholder="Descrição"></textarea>
 			</div>
 <!-- 			<div class="col-md-2"> -->
 <!-- 				<span style="color: darkblue;font-style: italic;">Data</span> -->

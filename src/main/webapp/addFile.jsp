@@ -51,9 +51,9 @@ $(document).ready(function(){
 			
 			<form id="fileForm" action="file/upload" enctype="multipart/form-data" method="POST">
 				<input type="file" id="file" name="file"><br /> 
-				<input type="text" class="form-control" style="width: 300px;" name="name" placeholder="Digite um nome para o arquivo"><br />
+				<input type="text" maxlength="300" class="form-control" style="width: 300px;" name="name" placeholder="Digite um nome para o arquivo"><br />
 				<input type="text" hidden name="projectId" id="projectId">
-				<textarea rows="5" cols="200" maxlength="255" class="form-control" id="description" name="description" style="width: 100%;margin-bottom: 15px;max-width: 100%;" placeholder="Descrição"></textarea>
+				<textarea rows="5" cols="200" maxlength="3000" class="form-control" id="description" name="description" style="width: 100%;margin-bottom: 15px;max-width: 100%;" placeholder="Descrição"></textarea>
 				<br/> 
 				<input type="submit" class="btn btn-success">
 				<button type="reset" class="btn btn-warning btnBack" style="margin-left: 15px;float: right;">Voltar</button>
