@@ -47,6 +47,8 @@ $(document).ready(function(){
 				</h3>
 			</div>
 			
+			<h4 style="color: red;">O caminho do arquivo NÃO pode conter acentuação!</h4>
+			
 			<form id="fileForm" action="file/upload" enctype="multipart/form-data" method="POST">
 				<input type="file" id="file" name="file"><br /> 
 				<input type="text" class="form-control" style="width: 300px;" name="name" placeholder="Digite um nome para o arquivo"><br />
