@@ -88,7 +88,7 @@
 		<div class="msgErrorLogin" style="margin: auto; text-align: center; color: red;">
 				${errorLogin}
 		</div>
-		<div class="about" style="margin-top: 300px;">
+		<div class="about" style="margin-top: 270px;">
 			<div class="row">
 				<div class="proposta col-md-6">
 					<h1>Proposta</h1>
@@ -102,7 +102,7 @@
 						vieira.daniella@gmail.com
 					 </h5>
 				</div>
-				<div class="proposta col-md-6" style="text-align: -webkit-right;">
+				<div class="autores col-md-6" style="text-align: -webkit-right;">
 					<h1>Autores</h1>
 					<h5><spam style="font-style: italic;font-family: -webkit-pictograph;font-size: 26px;">Alexsandro Valdez Rospide Capra</spam><br>
 						Acad&ecirc;mico do Curso de Sistemas de Informa&ccedil;&atilde;o<br>
@@ -116,6 +116,9 @@
 						miratansc@gmail.com
 					</h5>
 				</div>
+			</div>
+			<div class="frase" style="font-style: italic;margin-top: 50px;text-align: -webkit-right;">
+				<h4>"Computadores s&atilde;o como bicicletas para nossas mentes." (Steve Jobs, 1955 &mdash; 2011).</h4>
 			</div>
 		</div>
 	</div>
