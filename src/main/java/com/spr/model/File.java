@@ -18,6 +18,7 @@ public class File implements Serializable {
 	@GeneratedValue
 	private Integer fileId;
 	
+	@Column(length=500)
 	private String filePath;
 	
 	private Integer projectId;
