@@ -29,7 +29,7 @@
 
 </head>
 <body>
-	<!--  CHAMADA MENU FIXO PARA USUÁRIO SEM ACESSO E SCRIPT/LINK BOOTSTRAP E JQUERY -->
+	<!--  CHAMADA MENU FIXO PARA USUÃRIO SEM ACESSO E SCRIPT/LINK BOOTSTRAP E JQUERY -->
 	<div id="header">
     	<jsp:include page="menu.jsp"/>
 	</div>
@@ -41,15 +41,15 @@
 					<h1>Sua primeira vez aqui?</h1>
 					<div class="textSize">
 						<div class="textInfo">
-							<span>Para usar a Ferramenta você precisa criar uma conta de acesso.
+							<span>Para usar a Ferramenta voc&ecirc; precisa criar uma conta de acesso.
 							</span>
 						</div>
 						<div class="textInfo">
-							<span>Clique no botão abaixo e preencha o formulário.</span>
+							<span>Clique no bot&atilde;o abaixo e preencha o formul&aacute;rio.</span>
 						</div>
 						<div class="textInfo">
-							<span>O acesso a Ferramenta será realizado a 
-								  partir do Usuário e Senha cadastrados a seguir.
+							<span>O acesso a Ferramenta ser&aacute; realizado a 
+								  partir do Usu&aacute;rio e Senha cadastrados a seguir.
 							</span>
 						</div>
 					</div>
@@ -67,7 +67,7 @@
 						<div class="col-md-4 input-group" style="margin: auto; margin-bottom: 15px;">
 							<input style="border-radius: 5px; width: 100%;!important"
 								name="username" type="text" class="form-control"
-								placeholder="Usuário">
+								placeholder="Usu&aacute;rio">
 						</div>
 						<div class="col-md-4 input-group"
 							style="margin: auto; margin-bottom: 15px;">
@@ -85,10 +85,40 @@
 				</div>
 			</div>
 		</div>
+		<div class="msgErrorLogin" style="margin: auto; text-align: center; color: red;">
+				${errorLogin}
+		</div>
+		<div class="about" style="margin-top: 300px;">
+			<div class="row">
+				<div class="proposta col-md-6">
+					<h1>Proposta</h1>
+					<h5>O objetivo deste trabalho &eacute; desenvolver um sistema Web que permita contribuir na comunica&ccedil;&atilde;o entre os integrantes,
+					 e oferecer a possibilidade de gerenciar os arquivos produzidos durante o Trabalho de Conclus&atilde;o de Curso do curso de 
+					 Sistemas de Informa&ccedil;&atilde;o da Universidade do Sul de Santa Catarina &mdash; UNISUL.</h5>
+					 
+					 <h1>Orientadora</h1>
+					 <h5><spam style="font-style: italic;font-family: -webkit-pictograph;font-size: 26px;">Prof&ordf;. Daniella Vieira, MEng.</spam><br>
+						Professora de Computa&ccedil;&atilde;o e Sistemas de Informa&ccedil;&atilde;o<br>
+						vieira.daniella@gmail.com
+					 </h5>
+				</div>
+				<div class="proposta col-md-6" style="text-align: -webkit-right;">
+					<h1>Autores</h1>
+					<h5><spam style="font-style: italic;font-family: -webkit-pictograph;font-size: 26px;">Alexsandro Valdez Rospide Capra</spam><br>
+						Acad&ecirc;mico do Curso de Sistemas de Informa&ccedil;&atilde;o<br>
+						Universidade do Sul de Santa Catarina &mdash; UNISUL<br>
+						alexrospide@gmail.com
+					</h5>
+					<br>
+					<h5><spam style="font-style: italic;font-family: -webkit-pictograph;font-size: 26px;">Miratan Lehmkuhl da Silva</spam><br>
+						Acad&ecirc;mico do Curso de Sistemas de Informa&ccedil;&atilde;o<br>
+						Universidade do Sul de Santa Catarina &mdash; UNISUL<br>
+						miratansc@gmail.com
+					</h5>
+				</div>
+			</div>
+		</div>
 	</div>
 	
-	<div class="msgErrorLogin" style="margin: auto; text-align: center; color: red;">
-			${errorLogin}
-	</div>
 </body>
 </html>
